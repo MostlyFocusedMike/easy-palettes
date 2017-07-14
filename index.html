@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta author="Mike Cronin">
+  <title>Playground</title>
+  <link rel="stylesheet" href="css/styles.css?v" type="text/css">
+
+  <link rel='stylesheet' href='css/spectrum.css' />
+</head>
+<body>
+<!-- 
+ Value element carries the changing value, while styleElement has a changing background-color
+ Setting the value for the colorValue will change the color of the color block
+ -there can be as many as you want on the page at a time
+ -changing the buttons value will change the starting color of the colorBlock
+-->
+  <div>
+  <input id="colorOneBlock">
+    <button class="jscolor {value:'66ccff', valueElement:'colorOneValue', styleElement: 'colorOneBlock'}">Click to change color</button>
+    <button id="button">SHow value</button>
+    <p>Value:</p> <input id="colorOneValue"><br>
+  </div>
+  <div>
+    <input id="colorTwoBlock">
+    <button class="jscolor {value:'66ccff', valueElement:'colorTwoValue', styleElement: 'colorTwoBlock'}">Click to change color</button>
+    <button id="buttonTwo">SHow value</button>
+    <p>Value:</p> <input id="colorTwoValue"><br>
+  </div>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/jscolor.min.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
