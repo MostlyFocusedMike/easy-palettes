@@ -4,15 +4,18 @@
 
 (function () {
   "use strict";
-  var $button = $("#button");
+  var $button = $(".show");
 
-    function showColor() {
-      var $color1 = $("#colorOneValue");
+    function showColor(e) {
+      var value = e.target.id,
+        colorValue = "colorValue" + value,
+        $color1 = $("#" + colorValue);
+        
       window.alert($color1.val());
     }
   
-  $button.on("click", function(){
-    showColor()
+  $button.on("click", function(e){
+    showColor(e);
 });
   
 }());
