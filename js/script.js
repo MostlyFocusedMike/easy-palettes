@@ -1,21 +1,23 @@
 /*jslint plusplus: true*/
 /*jslint white: true*/
-
+/*globals $:false */
 
 (function () {
   "use strict";
   
-
   function showColor(e) {
+  //When you click the show button, it sends an alert with the color of that section
     var value = e.target.id,
       colorValue = "colorValue" + value,
       $color1 = $("#" + colorValue);
 
     window.alert($color1.val());
   }
-    
+  
+
   function findCurrentValues() {
-    var $colorValues = $(".colorValNum"),
+  //Proves that the program can read all values currently selected
+    var $colorValues = $(".colorValNum"),  
       $msg = " ";
     
     $colorValues.each(function() {
@@ -23,15 +25,13 @@
       
     });
     window.alert($msg);
-    
   }
   
 
-
   function clipBoard(e) {
-//    var copyTextarea = document.querySelector("#colorValueOne");
-    var targetValue = e.target.id,
-      $copyTextarea = $('#color' + targetValue),
+  //function that copies each specific value
+    var targetValue = e.target.id, //each copy button's id corresponds to the color value 
+      $copyTextarea = $('#color' + targetValue), //this created the id for the color element
       successful, msg;
 
     $copyTextarea.select(); //this selects the text inside the input field for copying
@@ -44,18 +44,52 @@
   }
 
 
+  function addPalette(palettes) {
+  //Add the colors you have to the palette localStorage variable
+      var $name = $("#palette-name").val(),
+        $colorBackground = $("#colorValueBackground").val(),
+        $color1 = $("#colorValueOne").val(),
+        palette = {name:$name, colorBackground:$colorBackground, color1:$color1};
+        
+      palettes.push(palette);
+      localStorage.palettes = JSON.stringify(palettes);
+      window.alert(palettes.length);
+  }
+
+  function checkStorage() {
+      var palettes = [];
+
+      if (localStorage.palettes) {
+          palettes = JSON.parse(localStorage.palettes);
+      } else {
+          localStorage.palettes = JSON.stringify(palettes);
+      }
+      return palettes
+  }
   
-  ////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  //MAIN PROGRAM BELOW////////////////////////////////////////////////////////////
+ 
   var $button = $(".show"),
-    $copyButton = $(".copyButton");
-  
-  $(findCurrentValues);
-  
+    $copyButton = $(".copyButton"),
+    $saveButton = $("#save-palette"),
+    $clearButton = $("#clear-palettes"),
+    palettes = checkStorage();
+    
+
   $button.on("click", function(e){
     showColor(e);
   });
   $copyButton.on("click", function(e) {
     clipBoard(e);
   });
-  
+  $clearButton.on("click", function() {
+      palettes.length = 0;
+    localStorage.palettes = JSON.stringify(palettes);
+  });
+  $saveButton.on("click", function() {
+    addPalette(palettes);
+  }); 
 }());

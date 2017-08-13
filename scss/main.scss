@@ -1,17 +1,20 @@
+$std-border: 2px solid black;
+
+
 button {
   width: 100px;
   display: block;
-  margin: 10px auto; }
-
+  margin: 10px auto;
+}
 #colorOneBlock, #colorTwoBlock {
   height: 100px;
   width: 100px;
   margin: 0 auto;
-  display: block; }
+  display: block;
+}
 
 div.paletteColor {
   margin: 10px auto;
   padding: 10px;
-  border: 2px solid black; }
-
-/*# sourceMappingURL=styles.css.map */
+  border: $std-border;
+}

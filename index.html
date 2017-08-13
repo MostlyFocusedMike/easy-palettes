@@ -2,11 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta author="Mike Cronin">
   <title>Playground</title>
   <link rel="stylesheet" href="css/styles.css?v" type="text/css">
-
-  <link rel='stylesheet' href='css/spectrum.css' />
 </head>
 <body>
 <!-- 
@@ -22,13 +19,16 @@
     <p>Value:</p> <input id="colorValueBackground" class="colorValNum"><br>
     <button class="copyButton" id="ValueBackground">copy value</button>
   </div>
+
   <div class="paletteColor">
-  <input id="colorBlockOne">
+    <input id="colorBlockOne">
     <button class="jscolor {value:'66ccff', valueElement:'colorValueOne', styleElement: 'colorBlockOne'}">Click to change color</button>
     <button class="show" id="One">Show value</button>
     <p>Value:</p> <input id="colorValueOne" class="colorValNum"><br>
     <button class="copyButton" id="ValueOne">copy value</button>
   </div>
+<!--
+ 
   <div class="paletteColor">
     <input id="colorBlockTwo">
     <button class="jscolor {value:'FFFFFF', valueElement:'colorValueTwo', styleElement: 'colorBlockTwo'}">Click to change color</button>
@@ -36,6 +36,7 @@
     <p>Value:</p> <input id="colorValueTwo" class="colorValNum"><br>
     <button class="copyButton" id="ValueTwo">copy value</button>
   </div>
+
   <div class="paletteColor">
     <input id="colorBlockThree">
     <button class="jscolor {value:'00DD00', valueElement:'colorValueThree', styleElement: 'colorBlockThree'}">Click to change color</button>
@@ -43,6 +44,7 @@
     <p>Value:</p> <input id="colorValueThree" class="colorValNum"><br>
     <button class="copyButton" id="ValueThree">copy value</button>
   </div>
+
   <div class="paletteColor">
     <input id="colorBlockFour">
     <button class="jscolor {value:'FF00EE', valueElement:'colorValueFour', styleElement: 'colorBlockFour'}">Click to change color</button>
@@ -50,7 +52,13 @@
     <p>Value:</p> <input id="colorValueFour" class="colorValNum"><br>
     <button class="copyButton" id="ValueFour">copy value</button>
   </div>
-  
+--> 
+  <div id="palette-maker">
+      <input id="palette-name" value="Palette #1" />
+      <button id="save-palette">Save Palette</button>
+      <button id="clear-palettes">Clear Palettes</button>
+  </div>
+ 
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/jscolor.min.js"></script>
   <script src="js/script.js"></script>
