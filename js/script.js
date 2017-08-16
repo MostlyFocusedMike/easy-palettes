@@ -49,12 +49,20 @@
       var $name = $("#palette-name").val(),
         $colorBackground = $("#colorValueBackground").val(),
         $color1 = $("#colorValueOne").val(),
-        palette = {name:$name, colorBackground:$colorBackground, color1:$color1};
-        
+        palette = [$colorBackground, $color1. $name];
+      //background goes first for iterating purposes  
       palettes.push(palette);
       localStorage.palettes = JSON.stringify(palettes);
-      window.alert(palettes.length);
+       window.alert(palettes.length);
   }
+
+  function createSwatches() {
+  }
+
+  function colorFillSwatches() {
+  }
+
+
 
   function checkStorage() {
       var palettes = [];
