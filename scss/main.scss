@@ -1,42 +1,45 @@
 $std-border: 2px solid black;
 $square: 200px;
 
+%backgroundColor {
+    height: 21rem;
+    width: 10rem;
+}
+
+
+%mainColors  {
+    height: 4rem;
+    width: 8rem;
+    margin: 1rem auto;
+}
 button {
   width: 100px;
   display: block;
   margin: 10px auto;
 }
-#colorOneBlock, #colorTwoBlock {
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-  display: block;
-}
-
 div.paletteColor {
   margin: 10px auto;
   padding: 10px;
   border: $std-border;
 }
-div.colorBlock {
+p {
+    text-size: 14px;
 }
+
 div.color0 {
-    width: $square;
-    height: $square;
+    @extend %backgroundColor;
+
+    div.color1 {
+        @extend %mainColors;
+    }
+    div.color2 {
+        @extend %mainColors;
+    }
+    div.color3 {
+        @extend %mainColors;
+    }
+    div.color4 {
+        @extend %mainColors;
+    }
 }
-div.color1 {
-    width: $square;
-    height: $square;
-}
-div.color2 {
-    width: $square;
-    height: $square;
-}
-div.color3 {
-    width: $square;
-    height: $square;
-}
-div.color4 {
-    width: $square;
-    height: $square;
-}
+

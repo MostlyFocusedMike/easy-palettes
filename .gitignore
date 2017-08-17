@@ -5,3 +5,5 @@ jscolor-2
 *.swp
 *.swo
 Session.vim
+.sass-cache
+

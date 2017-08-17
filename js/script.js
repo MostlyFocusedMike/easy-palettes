@@ -50,8 +50,8 @@
         $colorBackground = $("#colorValueBackground").val(),
         $color1 = $("#colorValueOne").val(),
         $color2 = $("#colorValueTwo").val(),
-        $color3 = $("#colorValuThree").val(),
-        $color4 = $("#colorValuFour").val(),
+        $color3 = $("#colorValueThree").val(),
+        $color4 = $("#colorValueFour").val(),
         palette = [$colorBackground, $color1, $color2, $color3, $color4, $name];
 
       //background goes first for iterating purposes  
@@ -70,7 +70,6 @@
           $swatches = $("#swatches");
           divId = palettes[i][5]+ "-col-" + palettes[i][0];
           $newDiv = $("<div class='colorBlock color0' id='" + divId + "'></div>");
-          window.alert($newDiv.class);
           for (k = 1; k < 5; k++) {
               divClass = "color" + k;
               divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color

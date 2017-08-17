@@ -1,37 +1,23 @@
+div.color0 {
+  height: 21rem;
+  width: 10rem; }
+
+div.color0 div.color1, div.color0 div.color2, div.color0 div.color3, div.color0 div.color4 {
+  height: 4rem;
+  width: 8rem;
+  margin: 1rem auto; }
+
 button {
   width: 100px;
   display: block;
   margin: 10px auto; }
-
-#colorOneBlock, #colorTwoBlock {
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-  display: block; }
 
 div.paletteColor {
   margin: 10px auto;
   padding: 10px;
   border: 2px solid black; }
 
-div.color0 {
-  width: 200px;
-  height: 200px; }
-
-div.color1 {
-  width: 200px;
-  height: 200px; }
-
-div.color2 {
-  width: 200px;
-  height: 200px; }
-
-div.color3 {
-  width: 200px;
-  height: 200px; }
-
-div.color4 {
-  width: 200px;
-  height: 200px; }
+p {
+  text-size: 14px; }
 
 /*# sourceMappingURL=styles.css.map */
