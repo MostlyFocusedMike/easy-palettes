@@ -1,5 +1,5 @@
 $std-border: 2px solid black;
-
+$square: 200px;
 
 button {
   width: 100px;
@@ -17,4 +17,26 @@ div.paletteColor {
   margin: 10px auto;
   padding: 10px;
   border: $std-border;
+}
+div.colorBlock {
+}
+div.color0 {
+    width: $square;
+    height: $square;
+}
+div.color1 {
+    width: $square;
+    height: $square;
+}
+div.color2 {
+    width: $square;
+    height: $square;
+}
+div.color3 {
+    width: $square;
+    height: $square;
+}
+div.color4 {
+    width: $square;
+    height: $square;
 }

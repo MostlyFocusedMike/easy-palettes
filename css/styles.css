@@ -14,4 +14,24 @@ div.paletteColor {
   padding: 10px;
   border: 2px solid black; }
 
+div.color0 {
+  width: 200px;
+  height: 200px; }
+
+div.color1 {
+  width: 200px;
+  height: 200px; }
+
+div.color2 {
+  width: 200px;
+  height: 200px; }
+
+div.color3 {
+  width: 200px;
+  height: 200px; }
+
+div.color4 {
+  width: 200px;
+  height: 200px; }
+
 /*# sourceMappingURL=styles.css.map */
