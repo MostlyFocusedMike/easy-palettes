@@ -49,7 +49,11 @@
       var $name = $("#palette-name").val(),
         $colorBackground = $("#colorValueBackground").val(),
         $color1 = $("#colorValueOne").val(),
-        palette = [$colorBackground, $color1. $name];
+        $color2 = $("#colorValueTwo").val(),
+        $color3 = $("#colorValuThree").val(),
+        $color4 = $("#colorValuFour").val(),
+        palette = [$colorBackground, $color1, $color2, $color3, $color4, $name];
+
       //background goes first for iterating purposes  
       palettes.push(palette);
       localStorage.palettes = JSON.stringify(palettes);
@@ -57,6 +61,27 @@
   }
 
   function createSwatches() {
+  //Create the divs that make up the swatches of the palettes
+      var palettes = JSON.parse(localStorage.palettes),
+        palettesLength = palettes.length,
+        i, $background, $swatches, divId, $newDiv, divClass, $newColor;
+
+      for (i = 0; i < palettesLength; i++) {
+          $swatches = $("#swatches");
+          divId = palettes[i][5]+ "-col-" + palettes[i][0];
+          $newDiv = $("<div class='color0' id='" + divId + "'></div>");
+
+
+          for (k = 1; k < 5; k++) {
+              divClass = "color" + k;
+              divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color
+              $newColor = $("<div class='" + divClass + "' id='" + divId + "' ></div>");    
+              $newDiv.append($newColor);
+      
+          }
+          $swatches.append($newDiv);
+      }
+
   }
 
   function colorFillSwatches() {
