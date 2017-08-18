@@ -1,45 +1,45 @@
 $std-border: 2px solid black;
 $square: 200px;
-
-%backgroundColor {
-    height: 21rem;
+%paletteColorBox {
     width: 10rem;
+    display: inline-block;
+}
+%backgroundColor {
+    width: 6rem;
+}
+
+%swatchColors  {
+    height: 1rem;
+    width: 80%;
+    margin: .5rem auto;
 }
 
 
-%mainColors  {
-    height: 4rem;
-    width: 8rem;
-    margin: 1rem auto;
-}
 button {
   width: 100px;
   display: block;
   margin: 10px auto;
 }
-div.paletteColor {
-  margin: 10px auto;
-  padding: 10px;
-  border: $std-border;
-}
-p {
-    text-size: 14px;
+div.paletteColorBox {
+    @extend %paletteColorBox;
+    border: $std-border;
 }
 
 div.color0 {
     @extend %backgroundColor;
-
+    display: inline-block;
+    margin: 1rem;
     div.color1 {
-        @extend %mainColors;
+        @extend %swatchColors;
     }
     div.color2 {
-        @extend %mainColors;
+        @extend %swatchColors;
     }
     div.color3 {
-        @extend %mainColors;
+        @extend %swatchColors;
     }
     div.color4 {
-        @extend %mainColors;
+        @extend %swatchColors;
     }
 }
 

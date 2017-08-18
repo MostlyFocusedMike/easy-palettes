@@ -84,7 +84,7 @@
   function colorFillSwatches() {
       $(".colorBlock").each(function () {
           var $color = "#" + $(this).attr("id").toString().slice(-6);
-          window.alert($color); 
+          //window.alert($color); 
           $(this).css("background-color", $color);
       })
   }
