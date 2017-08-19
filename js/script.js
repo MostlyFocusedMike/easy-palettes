@@ -64,21 +64,26 @@
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
-        i, k, $background, $swatches, divId, $newDiv, divClass, $newColor;
-
-      for (i = 0; i < palettesLength; i++) {
+        lP = palettesLength - 1, //lp = the last palette
+        i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor;
+      if (lP !== -1) {
           $swatches = $("#swatches");
-          divId = palettes[i][5]+ "-col-" + palettes[i][0];
-          $newDiv = $("<div class='colorBlock color0' id='" + divId + "'></div>");
+          $swatch = $("<div class='swatch'></div>");
+          paletteName = palettes[lP][5];
+          divId = paletteName  + "-col-" + palettes[lP][0];
+          $newBackground = $("<div class='colorBlock color0' id='" + divId + "'></div>");
           for (k = 1; k < 5; k++) {
               divClass = "color" + k;
-              divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color
+              divId = paletteName + "-col-" + palettes[lP][k]; //[5] is the name and [k] is the hex color
               $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
-              $newDiv.append($newColor);
-               
+              $newBackground.append($newColor);
           }
-          $swatches.append($newDiv);
-      }
+          $swatch.append($newBackground);
+          $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
+          $swatch.append("<button class='delete-swatch'>Delete Palette</button>");
+          $swatches.append($swatch);     
+      } 
+       
   }
 
   function colorFillSwatches() {
@@ -117,16 +122,19 @@
   $(colorFillSwatches());
 
   $button.on("click", function(e){
-    showColor(e);
+      showColor(e);
   });
   $copyButton.on("click", function(e) {
-    clipBoard(e);
+      clipBoard(e);
   });
   $clearButton.on("click", function() {
       palettes.length = 0;
-    localStorage.palettes = JSON.stringify(palettes);
+      localStorage.palettes = JSON.stringify(palettes);
+      $("#swatches").html("");
   });
   $saveButton.on("click", function() {
-    addPalette(palettes);
+      addPalette(palettes);
+      createSwatches();
+      colorFillSwatches();
   }); 
 }());

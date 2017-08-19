@@ -2,10 +2,18 @@ div.paletteColorBox {
   width: 10rem;
   display: inline-block; }
 
-div.color0 {
-  width: 6rem; }
+.swatch {
+  width: 6rem;
+  display: inline-block;
+  border: 2px solid black;
+  padding: 1rem;
+  margin: 1rem; }
 
-div.color0 div.color1, div.color0 div.color2, div.color0 div.color3, div.color0 div.color4 {
+.swatch div.color0 {
+  width: 80%;
+  margin: 0 auto; }
+
+.swatch div.color0 div.color1, .swatch div.color0 div.color2, .swatch div.color0 div.color3, .swatch div.color0 div.color4 {
   height: 1rem;
   width: 80%;
   margin: .5rem auto; }
@@ -18,7 +26,7 @@ button {
 div.paletteColorBox {
   border: 2px solid black; }
 
-div.color0 {
+.swatch div.color0 {
   display: inline-block;
   margin: 1rem; }
 

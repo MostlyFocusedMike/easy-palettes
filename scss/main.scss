@@ -4,8 +4,18 @@ $square: 200px;
     width: 10rem;
     display: inline-block;
 }
-%backgroundColor {
+
+%swatch {
     width: 6rem;
+    display: inline-block;
+    border: $std-border;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+%backgroundColor {
+    width: 80%;
+    margin: 0 auto;
 }
 
 %swatchColors  {
@@ -24,8 +34,9 @@ div.paletteColorBox {
     @extend %paletteColorBox;
     border: $std-border;
 }
-
-div.color0 {
+.swatch {
+    @extend %swatch;
+    div.color0 {
     @extend %backgroundColor;
     display: inline-block;
     margin: 1rem;
@@ -41,5 +52,7 @@ div.color0 {
     div.color4 {
         @extend %swatchColors;
     }
+}
+
 }
 
