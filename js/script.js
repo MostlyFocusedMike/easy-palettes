@@ -64,26 +64,25 @@
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
-        lP = palettesLength - 1, //lp = the last palette
         i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor;
-      if (lP !== -1) {
+      $("#swatches").html(""); 
+      for (i = 0; i < palettesLength; i++) {
           $swatches = $("#swatches");
           $swatch = $("<div class='swatch'></div>");
-          paletteName = palettes[lP][5];
-          divId = paletteName  + "-col-" + palettes[lP][0];
+          paletteName = palettes[i][5];
+          divId = paletteName  + "-col-" + palettes[i][0];
           $newBackground = $("<div class='colorBlock color0' id='" + divId + "'></div>");
           for (k = 1; k < 5; k++) {
               divClass = "color" + k;
-              divId = paletteName + "-col-" + palettes[lP][k]; //[5] is the name and [k] is the hex color
+              divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color
               $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
               $newBackground.append($newColor);
           }
           $swatch.append($newBackground);
           $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
           $swatch.append("<button class='delete-swatch'>Delete Palette</button>");
-          $swatches.append($swatch);     
-      } 
-       
+          $swatches.append($swatch); 
+      }
   }
 
   function colorFillSwatches() {
