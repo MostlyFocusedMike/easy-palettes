@@ -58,20 +58,22 @@
   }
 
 
-  function addPalette(palettes) {
+  function addPalette() {
   //Add the colors you have to the palette localStorage variable
-      var $name = $("#palette-name").val(),
+      var $name = $("#palette-name"),
         $colorBackground = $("#colorValueBackground").val(),
         $color1 = $("#colorValueOne").val(),
         $color2 = $("#colorValueTwo").val(),
         $color3 = $("#colorValueThree").val(),
         $color4 = $("#colorValueFour").val(),
-        palette = [$colorBackground, $color1, $color2, $color3, $color4, $name];
-
+        palettes = JSON.parse(localStorage.palettes),
+        palette = [$colorBackground, $color1, $color2, $color3, $color4, $name.val()];
+      window.alert(JSON.stringify(localStorage.palettes));
       //background goes first for iterating purposes  
       palettes.unshift(palette); //unshift to add the palette to the front of the array
       localStorage.palettes = JSON.stringify(palettes);
        window.alert(palettes.length);
+      $name.val("Palette Name Here"); 
   }
 
 
@@ -104,7 +106,7 @@
 
   function colorFillSwatches() {
   //once the swatches are created they are colored
-      $(".colorBlock").each(function () { 
+      $(".colorBlock").each(function () {  
           var $color = "#" + $(this).attr("id").toString().slice(-6);
           //window.alert($color); 
           $(this).css("background-color", $color);
@@ -113,7 +115,6 @@
 
   function removeSwatch(event) {
   //removes selected swatch 
-  
     var button = $(event.target),
         $swatch = button.parent(),
         $swatches = $(".swatch"),
@@ -124,10 +125,9 @@
     window.alert($index);
     window.alert(JSON.stringify(palettes));
     localStorage.palettes = JSON.stringify(palettes);
+    window.alert(JSON.stringify(localStorage.palettes));
     $swatch.remove();
-  
   }
-  
   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -138,6 +138,7 @@
     $copyButton = $(".copyButton"),
     $saveButton = $("#save-palette"),
     $clearButton = $("#clear-palettes"),
+    $nameForm = $("#palette-name"),
     palettes = checkStorage();
     
   $(createSwatches(removeSwatch));
@@ -145,6 +146,9 @@
 
   $button.on("click", function(e){
       showColor(e);
+  });
+  $nameForm.on("click", function() {
+      $("#palette-name").val("");
   });
   $copyButton.on("click", function(e) {
       clipBoard(e);
@@ -155,7 +159,7 @@
       $("#swatches").html("");
   });
   $saveButton.on("click", function() {
-      addPalette(palettes);
+      addPalette();
       createSwatches(removeSwatch);
       colorFillSwatches();
   }); 
