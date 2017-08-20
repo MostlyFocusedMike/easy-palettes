@@ -4,7 +4,21 @@
 
 (function () {
   "use strict";
-  
+
+
+  function checkStorage() {
+  //at the start of the program, it checks to see if there are any saved palettes
+      var palettes = [];
+
+      if (localStorage.palettes) {
+          palettes = JSON.parse(localStorage.palettes);
+      } else {
+          localStorage.palettes = JSON.stringify(palettes);
+      }
+      return palettes
+  }
+
+
   function showColor(e) {
   //When you click the show button, it sends an alert with the color of that section
     var value = e.target.id,
@@ -55,12 +69,13 @@
         palette = [$colorBackground, $color1, $color2, $color3, $color4, $name];
 
       //background goes first for iterating purposes  
-      palettes.push(palette);
+      palettes.unshift(palette); //unshift to add the palette to the front of the array
       localStorage.palettes = JSON.stringify(palettes);
        window.alert(palettes.length);
   }
 
-  function createSwatches() {
+
+  function createSwatches(removeSwatch) {
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
@@ -80,31 +95,39 @@
           }
           $swatch.append($newBackground);
           $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
-          $swatch.append("<button class='delete-swatch'>Delete Palette</button>");
+          $swatch.append("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
           $swatches.append($swatch); 
+
       }
   }
 
+
   function colorFillSwatches() {
-      $(".colorBlock").each(function () {
+  //once the swatches are created they are colored
+      $(".colorBlock").each(function () { 
           var $color = "#" + $(this).attr("id").toString().slice(-6);
           //window.alert($color); 
           $(this).css("background-color", $color);
       })
   }
 
-
-
-  function checkStorage() {
-      var palettes = [];
-
-      if (localStorage.palettes) {
-          palettes = JSON.parse(localStorage.palettes);
-      } else {
-          localStorage.palettes = JSON.stringify(palettes);
-      }
-      return palettes
+  function removeSwatch(event) {
+  //removes selected swatch 
+  
+    var button = $(event.target),
+        $swatch = button.parent(),
+        $swatches = $(".swatch"),
+        $index = $swatches.index($swatch),
+        palettes = JSON.parse(localStorage.palettes);
+   
+    palettes.splice($index, 1);
+    window.alert($index);
+    window.alert(JSON.stringify(palettes));
+    localStorage.palettes = JSON.stringify(palettes);
+    $swatch.remove();
+  
   }
+  
   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -117,7 +140,7 @@
     $clearButton = $("#clear-palettes"),
     palettes = checkStorage();
     
-  $(createSwatches());
+  $(createSwatches(removeSwatch));
   $(colorFillSwatches());
 
   $button.on("click", function(e){
@@ -133,7 +156,8 @@
   });
   $saveButton.on("click", function() {
       addPalette(palettes);
-      createSwatches();
+      createSwatches(removeSwatch);
       colorFillSwatches();
   }); 
+  
 }());
