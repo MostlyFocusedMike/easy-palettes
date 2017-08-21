@@ -26,6 +26,9 @@ button {
 div.paletteColorBox {
   border: 2px solid black; }
 
+h3.palette-name {
+  font-size: .8rem; }
+
 .swatch div.color0 {
   display: inline-block;
   margin: 1rem; }

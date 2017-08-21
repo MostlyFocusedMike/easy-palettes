@@ -60,20 +60,34 @@
 
   function addPalette() {
   //Add the colors you have to the palette localStorage variable
-      var $name = $("#palette-name"),
+      var $name = $("#palette-name").val(),
         $colorBackground = $("#colorValueBackground").val(),
         $color1 = $("#colorValueOne").val(),
         $color2 = $("#colorValueTwo").val(),
         $color3 = $("#colorValueThree").val(),
         $color4 = $("#colorValueFour").val(),
         palettes = JSON.parse(localStorage.palettes),
-        palette = [$colorBackground, $color1, $color2, $color3, $color4, $name.val()];
+        palette = [$colorBackground, $color1, $color2, $color3, $color4, $name],
+        i;
       //window.alert(JSON.stringify(localStorage.palettes));
-      //background goes first for iterating purposes  
+      
+      if ($name === "Palette Name Here" || $name === "") {
+          window.alert("Don't forget to name your palette!");
+          $("#palette-name").val("").focus();
+          return;
+      }
+      //if there's a match, it's updated instead of creating a new entry
+      for (i = 0; i < palettes.length; i++) {
+          if ($name === palettes[i][5]) {
+              palettes[i] = palette;
+              localStorage.palettes = JSON.stringify(palettes);
+              return; 
+          }
+      } 
       palettes.unshift(palette); //unshift to add the palette to the front of the array
       localStorage.palettes = JSON.stringify(palettes);
        //window.alert(palettes.length);
-      $name.val("Palette Name Here"); 
+      $("#palette-name").val("Palette Name Here"); 
   }
 
 
@@ -119,18 +133,19 @@
 
   function loadSwatch() {
   //Load selected swatch into five main colors 
-  
     var $button = $(event.target),
         $swatch = $button.parent(),
         $swatches = $(".swatch"),
         $index = $swatches.index($swatch),
         palettes = JSON.parse(localStorage.palettes);
-
-    $("#colorValueBackground").val(palettes[$index][0]).focus(); //the .focus is needed beacuse jscolor will only update the 
-    $("#colorValueOne").val(palettes[$index][1]).focus();        //the styleElement if the value element has focus
+    //the .focus is needed beacuse jscolor will only update the 
+     //the styleElement if the value element has focus
+    $("#colorValueBackground").val(palettes[$index][0]).focus(); 
+    $("#colorValueOne").val(palettes[$index][1]).focus();       
     $("#colorValueTwo").val(palettes[$index][2]).focus();
     $("#colorValueThree").val(palettes[$index][3]).focus();
     $("#colorValueFour").val(palettes[$index][4]).focus();   
+    $("#palette-name").val(palettes[$index][5]);
   }
 
 
@@ -148,11 +163,6 @@
     localStorage.palettes = JSON.stringify(palettes);
     //window.alert(JSON.stringify(localStorage.palettes));
     $swatch.remove();
-  }
-
-  function checkName() {
-  //Checks the name as a duplicate, length, gives size
-    
   }
   
   ////////////////////////////////////////////////////////////////////////////////

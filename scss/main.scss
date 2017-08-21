@@ -34,6 +34,9 @@ div.paletteColorBox {
     @extend %paletteColorBox;
     border: $std-border;
 }
+h3.palette-name {
+    font-size: .8rem;
+}
 .swatch {
     @extend %swatch;
     div.color0 {
