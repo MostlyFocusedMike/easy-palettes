@@ -25,7 +25,7 @@
       colorValue = "colorValue" + value,
       $color1 = $("#" + colorValue);
 
-    window.alert($color1.val());
+    //window.alert($color1.val());
   }
   
 
@@ -38,13 +38,13 @@
       $msg += " " + $(this).val();
       
     });
-    window.alert($msg);
+    //window.alert($msg);
   }
   
 
   function clipBoard(e) {
   //function that copies each specific value
-    var targetValue = e.target.id, //each copy button's id corresponds to the color value 
+    var targetValue =  e.target.id, //each copy button's id corresponds to the color value 
       $copyTextarea = $('#color' + targetValue), //this created the id for the color element
       successful, msg;
 
@@ -53,7 +53,7 @@
     try { //it's good practice to put execCommands in try catch blocks
       successful = document.execCommand('copy'); //no need to check for malicious code, color.js does
     } catch (err) {
-      window.alert('Oops, unable to copy');
+      //window.alert('Oops, unable to copy');
     }
   }
 
@@ -68,20 +68,20 @@
         $color4 = $("#colorValueFour").val(),
         palettes = JSON.parse(localStorage.palettes),
         palette = [$colorBackground, $color1, $color2, $color3, $color4, $name.val()];
-      window.alert(JSON.stringify(localStorage.palettes));
+      //window.alert(JSON.stringify(localStorage.palettes));
       //background goes first for iterating purposes  
       palettes.unshift(palette); //unshift to add the palette to the front of the array
       localStorage.palettes = JSON.stringify(palettes);
-       window.alert(palettes.length);
+       //window.alert(palettes.length);
       $name.val("Palette Name Here"); 
   }
 
 
-  function createSwatches(removeSwatch) {
+  function createSwatches(loadSwatch, removeSwatch) {
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
-        i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor;
+        i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor, $deleteButton, $loadButton;
       $("#swatches").html(""); 
       for (i = 0; i < palettesLength; i++) {
           $swatches = $("#swatches");
@@ -95,9 +95,12 @@
               $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
               $newBackground.append($newColor);
           }
+          $loadButton =  $("<button class='remove-swatch'>Load Palette</button>").click(loadSwatch);
+          $swatch.append($loadButton);
           $swatch.append($newBackground);
           $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
-          $swatch.append("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
+          $deleteButton = $("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
+          $swatch.append($deleteButton);
           $swatches.append($swatch); 
 
       }
@@ -113,20 +116,43 @@
       })
   }
 
+
+  function loadSwatch() {
+  //Load selected swatch into five main colors 
+  
+    var $button = $(event.target),
+        $swatch = $button.parent(),
+        $swatches = $(".swatch"),
+        $index = $swatches.index($swatch),
+        palettes = JSON.parse(localStorage.palettes);
+
+    $("#colorValueBackground").val(palettes[$index][0]).focus(); //the .focus is needed beacuse jscolor will only update the 
+    $("#colorValueOne").val(palettes[$index][1]).focus();        //the styleElement if the value element has focus
+    $("#colorValueTwo").val(palettes[$index][2]).focus();
+    $("#colorValueThree").val(palettes[$index][3]).focus();
+    $("#colorValueFour").val(palettes[$index][4]).focus();   
+  }
+
+
   function removeSwatch(event) {
   //removes selected swatch 
-    var button = $(event.target),
-        $swatch = button.parent(),
+    var $button = $(event.target),
+        $swatch = $button.parent(),
         $swatches = $(".swatch"),
         $index = $swatches.index($swatch),
         palettes = JSON.parse(localStorage.palettes);
    
     palettes.splice($index, 1);
-    window.alert($index);
-    window.alert(JSON.stringify(palettes));
+    //window.alert($index);
+    //window.alert(JSON.stringify(palettes));
     localStorage.palettes = JSON.stringify(palettes);
-    window.alert(JSON.stringify(localStorage.palettes));
+    //window.alert(JSON.stringify(localStorage.palettes));
     $swatch.remove();
+  }
+
+  function checkName() {
+  //Checks the name as a duplicate, length, gives size
+    
   }
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -141,7 +167,7 @@
     $nameForm = $("#palette-name"),
     palettes = checkStorage();
     
-  $(createSwatches(removeSwatch));
+  $(createSwatches(loadSwatch, removeSwatch));
   $(colorFillSwatches());
 
   $button.on("click", function(e){
@@ -160,7 +186,7 @@
   });
   $saveButton.on("click", function() {
       addPalette();
-      createSwatches(removeSwatch);
+      createSwatches(loadSwatch, removeSwatch);
       colorFillSwatches();
   }); 
   
