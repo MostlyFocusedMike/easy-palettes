@@ -1,36 +1,127 @@
-div.paletteColorBox {
-  width: 10rem;
-  display: inline-block; }
+div#paletteColors, div#paletteColors div.paletteColorBox div.palette-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
 
-.swatch {
-  width: 6rem;
-  display: inline-block;
-  border: 2px solid black;
-  padding: 1rem;
-  margin: 1rem; }
-
-.swatch div.color0 {
-  width: 80%;
-  margin: 0 auto; }
-
-.swatch div.color0 div.color1, .swatch div.color0 div.color2, .swatch div.color0 div.color3, .swatch div.color0 div.color4 {
-  height: 1rem;
-  width: 80%;
-  margin: .5rem auto; }
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: #1F1F1F; }
 
 button {
   width: 100px;
   display: block;
-  margin: 10px auto; }
+  margin: .25rem auto;
+  border-radius: 0%;
+  font-size: .9rem;
+  width: 8rem;
+  color: white;
+  border: 3px solid #222;
+  background: color1;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#666, #555);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#666, #555);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#666, #555);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#666, #555);
+  /* Standard syntax */ }
+  button:active {
+    background: color1;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#444, #777);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#444, #777);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#444, #777);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#444, #777);
+    /* Standard syntax */ }
 
-div.paletteColorBox {
-  border: 2px solid black; }
+div#paletteColors div.paletteColorBox {
+  margin: .25rem 1rem;
+  padding: 0px;
+  width: 20rem; }
+  div#paletteColors div.paletteColorBox .value-name {
+    width: 20rem;
+    height: 30px;
+    padding: 0rem;
+    border: 3px solid black;
+    font-family: Oswald, Helvetica, sans-serif;
+    font-size: 1rem;
+    background-color: #767676; }
+    div#paletteColors div.paletteColorBox .value-name p {
+      display: inline-block;
+      margin-left: .4rem;
+      padding: 0px;
+      margin-top: .25rem;
+      font-size: 1rem; }
+    div#paletteColors div.paletteColorBox .value-name input {
+      display: inline-block;
+      padding: 0px;
+      width: 5rem;
+      margin-top: -.1rem;
+      font-size: 1rem;
+      background-color: #efefef; }
+  div#paletteColors div.paletteColorBox div.palette-container {
+    border: 3px solid black;
+    width: 20rem;
+    position: relative;
+    top: -3px;
+    background-color: #434343;
+    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+    div#paletteColors div.paletteColorBox div.palette-container .color-preview {
+      margin: .5rem 1rem;
+      width: 6rem;
+      height: 6rem;
+      border: 3px solid black;
+      border-radius: 50%;
+      text-align: center; }
+    div#paletteColors div.paletteColorBox div.palette-container .palette-buttons {
+      padding: 0rem 1rem 0rem 1rem; }
 
-h3.palette-name {
-  font-size: .8rem; }
+#palette-maker {
+  margin: 1rem auto;
+  width: 15rem; }
+  #palette-maker input#palette-name {
+    width: 8rem;
+    display: block;
+    margin: 0 auto; }
 
-.swatch div.color0 {
-  display: inline-block;
-  margin: 1rem; }
+#swatch-box {
+  width: 90%;
+  margin: 1rem auto;
+  border: 3px solid black;
+  height: 22rem;
+  overflow-x: scroll;
+  white-space: nowrap; }
+  #swatch-box #swatches {
+    height: 22rem;
+    width: inherit; }
+    #swatch-box #swatches .swatch {
+      display: inline-block;
+      position: relative;
+      width: 10rem;
+      height: 15rem;
+      border: 3px solid black;
+      padding: 1rem;
+      margin: .25rem;
+      vertical-align: top;
+      overflow: hidden; }
+      #swatch-box #swatches .swatch div.color0 {
+        width: 7.1rem;
+        height: 8rem;
+        display: block;
+        margin: 0 auto;
+        padding: .1rem; }
+      #swatch-box #swatches .swatch div.color1, #swatch-box #swatches .swatch div.color2, #swatch-box #swatches .swatch div.color3, #swatch-box #swatches .swatch div.color4 {
+        height: 1.35rem;
+        width: 6rem;
+        margin: .5rem auto; }
+      #swatch-box #swatches .swatch h3.palette-name {
+        flex-shrink: 2;
+        font-size: 1rem; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -15,7 +15,7 @@
       } else {
           localStorage.palettes = JSON.stringify(palettes);
       }
-      return palettes
+      return palettes;
   }
 
 
@@ -127,7 +127,7 @@
           var $color = "#" + $(this).attr("id").toString().slice(-6);
           //window.alert($color); 
           $(this).css("background-color", $color);
-      })
+      }); 
   }
 
 
