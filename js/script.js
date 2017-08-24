@@ -43,29 +43,31 @@
   
 
   function clipBoard(e) {
-  //function that copies each specific value
+  //function that copies each hash value
     var targetValue =  e.target.id, //each copy button's id corresponds to the color value 
-      $copyTextarea = $('#color' + targetValue), //this created the id for the color element
+      $copyTextarea = $('#color-' + targetValue), //makes the id of the hash or non-hash version
+      $hashInput = $('#color-' + targetValue.slice(0, 7) + "-hex"), //selects the hash input always
+      $hashValue = $('#color-' + targetValue.slice(0, 7)).val(), 
       successful, msg;
-
+    
+    $hashInput.val("#" + $hashValue);
     $copyTextarea.select(); //this selects the text inside the input field for copying
     
     try { //it's good practice to put execCommands in try catch blocks
       successful = document.execCommand('copy'); //no need to check for malicious code, color.js does
     } catch (err) {
-      //window.alert('Oops, unable to copy');
+      window.alert('Oops, unable to copy');
     }
   }
-
 
   function addPalette() {
   //Add the colors you have to the palette localStorage variable
       var $name = $("#palette-name").val(),
-        $colorBackground = $("#colorValueBackground").val(),
-        $color1 = $("#colorValueOne").val(),
-        $color2 = $("#colorValueTwo").val(),
-        $color3 = $("#colorValueThree").val(),
-        $color4 = $("#colorValueFour").val(),
+        $colorBackground = $("#color-value-0").val(),
+        $color1 = $("#color-value-1").val(),
+        $color2 = $("#color-value-2").val(),
+        $color3 = $("#color-value-3").val(),
+        $color4 = $("#color-value-4").val(),
         palettes = JSON.parse(localStorage.palettes),
         palette = [$colorBackground, $color1, $color2, $color3, $color4, $name],
         i;
@@ -140,12 +142,13 @@
         palettes = JSON.parse(localStorage.palettes);
     //the .focus is needed beacuse jscolor will only update the 
      //the styleElement if the value element has focus
-    $("#colorValueBackground").val(palettes[$index][0]).focus(); 
-    $("#colorValueOne").val(palettes[$index][1]).focus();       
-    $("#colorValueTwo").val(palettes[$index][2]).focus();
-    $("#colorValueThree").val(palettes[$index][3]).focus();
-    $("#colorValueFour").val(palettes[$index][4]).focus();   
-    $("#palette-name").val(palettes[$index][5]);
+    $("#color-value-0").val(palettes[$index][0]).focus(); 
+    $("#color-value-1").val(palettes[$index][1]).focus();       
+    $("#color-value-2").val(palettes[$index][2]).focus();
+    $("#color-value-3").val(palettes[$index][3]).focus();
+    $("#color-value-4").val(palettes[$index][4]).focus();   
+    $("#palette-name").val(palettes[$index][5]).focus();
+    
   }
 
 
@@ -164,6 +167,8 @@
     //window.alert(JSON.stringify(localStorage.palettes));
     $swatch.remove();
   }
+
+  
   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -171,10 +176,11 @@
   //MAIN PROGRAM BELOW////////////////////////////////////////////////////////////
  
   var $button = $(".show"),
-    $copyButton = $(".copyButton"),
+    $copyButton = $(".copy-button"),
     $saveButton = $("#save-palette"),
     $clearButton = $("#clear-palettes"),
     $nameForm = $("#palette-name"),
+    $jsColor = $(".jscolor"),
     palettes = checkStorage();
     
   $(createSwatches(loadSwatch, removeSwatch));

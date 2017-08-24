@@ -1,4 +1,4 @@
-div#paletteColors, div#paletteColors div.paletteColorBox div.palette-container {
+div#palette-colors, div#palette-colors div.palette-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -7,7 +7,8 @@ html {
   margin: 0;
   padding: 0;
   font-size: 14px;
-  background-color: #1F1F1F; }
+  background-color: #1F1F1F;
+  overflow-x: hidden; }
 
 button {
   width: 100px;
@@ -40,47 +41,44 @@ button {
     background: linear-gradient(#444, #777);
     /* Standard syntax */ }
 
-div#paletteColors div.paletteColorBox {
+div#palette-colors div.palette-container {
+  border: 3px solid black;
+  width: rem;
   margin: .25rem 1rem;
   padding: 0px;
-  width: 20rem; }
-  div#paletteColors div.paletteColorBox .value-name {
-    width: 20rem;
-    height: 30px;
-    padding: 0rem;
-    border: 3px solid black;
-    font-family: Oswald, Helvetica, sans-serif;
-    font-size: 1rem;
-    background-color: #767676; }
-    div#paletteColors div.paletteColorBox .value-name p {
-      display: inline-block;
-      margin-left: .4rem;
-      padding: 0px;
-      margin-top: .25rem;
-      font-size: 1rem; }
-    div#paletteColors div.paletteColorBox .value-name input {
-      display: inline-block;
+  background-color: #434343;
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+  div#palette-colors div.palette-container .color-preview {
+    position: relative;
+    left: 0rem;
+    width: 7rem;
+    height: 7rem;
+    text-align: center; }
+  div#palette-colors div.palette-container .palette-buttons {
+    float: right;
+    padding: 0rem 1rem 0rem 1rem;
+    border-left: 3px solid black; }
+    div#palette-colors div.palette-container .palette-buttons input {
       padding: 0px;
       width: 5rem;
-      margin-top: -.1rem;
+      height: 1.3rem;
+      margin: .5rem 2rem .2rem;
       font-size: 1rem;
-      background-color: #efefef; }
-  div#paletteColors div.paletteColorBox div.palette-container {
-    border: 3px solid black;
-    width: 20rem;
-    position: relative;
-    top: -3px;
-    background-color: #434343;
-    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
-    div#paletteColors div.paletteColorBox div.palette-container .color-preview {
-      margin: .5rem 1rem;
-      width: 6rem;
-      height: 6rem;
-      border: 3px solid black;
-      border-radius: 50%;
+      background-color: #efefef;
       text-align: center; }
-    div#paletteColors div.paletteColorBox div.palette-container .palette-buttons {
-      padding: 0rem 1rem 0rem 1rem; }
+    div#palette-colors div.palette-container .palette-buttons .hash-version {
+      position: absolute;
+      left: 900rem; }
+div#palette-colors .value-name {
+  width: 20rem;
+  height: 30px;
+  padding: 0rem;
+  border: 3px solid black;
+  font-family: Oswald, Helvetica, sans-serif;
+  font-size: 1rem;
+  background-color: #767676;
+  position: relative;
+  top: -3px; }
 
 #palette-maker {
   margin: 1rem auto;

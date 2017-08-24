@@ -20,6 +20,7 @@ html {
   padding: 0;
   font-size: 14px;
   background-color: #1F1F1F;
+  overflow-x: hidden;
 }
 
 button {
@@ -37,60 +38,60 @@ button {
   }
 }
 
-div#paletteColors {
+
+div#palette-colors {
     @extend %flexy;
-    div.paletteColorBox {
+    div.palette-container {
+        @extend %flexy;
+        border: $std-border;
+        width: rem;
         margin: .25rem 1rem;
         padding: 0px;
-        width: 20rem;
-        .value-name {
-            width: 20rem;
-            height: 30px;
-            padding: 0rem;
-            border: $std-border;
-            font-family: Oswald, Helvetica, sans-serif;
-            font-size: 1rem;
-            background-color: #767676;
-            p {
-                display: inline-block;
-                margin-left: .4rem;
-                padding: 0px;
-                margin-top: .25rem;
-                font-size: 1rem;
-            }
+
+
+        background-color: #434343;
+        box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+        .color-preview {
+            position: relative;
+            left: 0rem;
+            width: 7rem;
+            height: 7rem;
+            text-align: center;
+
+        }
+        .palette-buttons {
+            float: right;
+            padding: 0rem 1rem 0rem 1rem;
+            border-left: $std-border;
             input {
-                display: inline-block;
                 padding: 0px;
                 width: 5rem;
-                margin-top: -.1rem;
+                height: 1.3rem;
+                margin: .5rem 2rem .2rem;
                 font-size: 1rem;
                 background-color: #efefef;
-                  
-            }
-        }
-        div.palette-container {
-            @extend %flexy;
-            border: $std-border;
-            width: 20rem;
-            position: relative;
-            top: -3px;
-            background-color: #434343;
-            box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
-            .color-preview {
-                margin: .5rem 1rem;
-                width: 6rem;
-                height: 6rem;
-                border: 3px solid black;
-                border-radius: 50%;
                 text-align: center;
-
             }
-            .palette-buttons {
-                padding: 0rem 1rem 0rem 1rem;
-            } 
-        }
-        
-  }
+            .hash-version {
+                position: absolute;
+                left: 900rem;
+            }
+        } 
+
+    }
+    .value-name {
+        width: 20rem;
+        height: 30px;
+        padding: 0rem;
+        border: $std-border;
+        font-family: Oswald, Helvetica, sans-serif;
+        font-size: 1rem;
+        background-color: #767676;
+        position: relative;
+        top: -3px;
+
+    }
+  
   
 }
 #palette-maker {
