@@ -69,16 +69,6 @@ div#palette-colors div.palette-container {
     div#palette-colors div.palette-container .palette-buttons .hash-version {
       position: absolute;
       left: 900rem; }
-div#palette-colors .value-name {
-  width: 20rem;
-  height: 30px;
-  padding: 0rem;
-  border: 3px solid black;
-  font-family: Oswald, Helvetica, sans-serif;
-  font-size: 1rem;
-  background-color: #767676;
-  position: relative;
-  top: -3px; }
 
 #palette-maker {
   margin: 1rem auto;
@@ -88,38 +78,70 @@ div#palette-colors .value-name {
     display: block;
     margin: 0 auto; }
 
-#swatch-box {
+#swatches {
+  height: 22rem;
+  width: inherit;
   width: 90%;
   margin: 1rem auto;
   border: 3px solid black;
-  height: 22rem;
+  height: 25rem;
   overflow-x: scroll;
-  white-space: nowrap; }
-  #swatch-box #swatches {
-    height: 22rem;
-    width: inherit; }
-    #swatch-box #swatches .swatch {
-      display: inline-block;
-      position: relative;
-      width: 10rem;
-      height: 15rem;
-      border: 3px solid black;
-      padding: 1rem;
-      margin: .25rem;
-      vertical-align: top;
-      overflow: hidden; }
-      #swatch-box #swatches .swatch div.color0 {
-        width: 7.1rem;
-        height: 8rem;
-        display: block;
-        margin: 0 auto;
-        padding: .1rem; }
-      #swatch-box #swatches .swatch div.color1, #swatch-box #swatches .swatch div.color2, #swatch-box #swatches .swatch div.color3, #swatch-box #swatches .swatch div.color4 {
-        height: 1.35rem;
-        width: 6rem;
-        margin: .5rem auto; }
-      #swatch-box #swatches .swatch h3.palette-name {
-        flex-shrink: 2;
-        font-size: 1rem; }
+  white-space: nowrap;
+  background-color: #121212; }
+  #swatches .swatch {
+    display: inline-block;
+    position: relative;
+    width: 10rem;
+    height: 16rem;
+    border: 3px solid black;
+    padding: 1rem;
+    margin: 2rem 1rem;
+    vertical-align: top;
+    color: white;
+    background-color: #434343;
+    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+    #swatches .swatch h3 {
+      font-family: Helvetica, sans-serif;
+      font-size: 1.1rem;
+      text-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+      text-align: center;
+      white-space: normal;
+      word-wrap: break-word;
+      margin: 1rem auto; }
+    #swatches .swatch div.color0 {
+      width: 7.1rem;
+      height: 8rem;
+      display: block;
+      margin: 1rem auto;
+      padding: .1rem; }
+    #swatches .swatch div.color1, #swatches .swatch div.color2, #swatches .swatch div.color3, #swatches .swatch div.color4 {
+      height: 1.35rem;
+      width: 6rem;
+      margin: .5rem auto; }
+    #swatches .swatch .remove-swatch {
+      position: absolute;
+      top: 19rem;
+      left: 2rem;
+      background: color1;
+      /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(#870000, #610000);
+      /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(#870000, #610000);
+      /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(#870000, #610000);
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(#870000, #610000);
+      /* Standard syntax */ }
+      #swatches .swatch .remove-swatch:active {
+        background: color1;
+        /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(#610000, #870000);
+        /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#610000, #870000);
+        /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#610000, #870000);
+        /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#610000, #870000);
+        /* Standard syntax */ }
 
 /*# sourceMappingURL=styles.css.map */

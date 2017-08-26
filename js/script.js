@@ -48,13 +48,13 @@
       $copyTextarea = $('#color-' + targetValue), //makes the id of the hash or non-hash version
       $hashInput = $('#color-' + targetValue.slice(0, 7) + "-hex"), //selects the hash input always
       $hashValue = $('#color-' + targetValue.slice(0, 7)).val(), 
-      successful, msg;
+      successful;
     
     $hashInput.val("#" + $hashValue);
     $copyTextarea.select(); //this selects the text inside the input field for copying
     
     try { //it's good practice to put execCommands in try catch blocks
-      successful = document.execCommand('copy'); //no need to check for malicious code, color.js does
+      document.execCommand('copy'); //no need to check for malicious code, color.js does
     } catch (err) {
       window.alert('Oops, unable to copy');
     }
@@ -111,7 +111,7 @@
               $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
               $newBackground.append($newColor);
           }
-          $loadButton =  $("<button class='remove-swatch'>Load Palette</button>").click(loadSwatch);
+          $loadButton =  $("<button class='load-swatch'>Load Palette</button>").click(loadSwatch);
           $swatch.append($loadButton);
           $swatch.append($newBackground);
           $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
@@ -148,7 +148,6 @@
     $("#color-value-3").val(palettes[$index][3]).focus();
     $("#color-value-4").val(palettes[$index][4]).focus();   
     $("#palette-name").val(palettes[$index][5]).focus();
-    
   }
 
 
@@ -167,6 +166,14 @@
     //window.alert(JSON.stringify(localStorage.palettes));
     $swatch.remove();
   }
+  
+  function clearPaletteInput(event) {
+  //overcomes jscolor to clear input in case user wants to paste in number
+    var $input = $(event.target);
+    
+    $input.focus();
+    $input.val("");
+  }
 
   
   
@@ -180,6 +187,7 @@
     $saveButton = $("#save-palette"),
     $clearButton = $("#clear-palettes"),
     $nameForm = $("#palette-name"),
+    $inputs = $("input"),
     $jsColor = $(".jscolor"),
     palettes = checkStorage();
     
@@ -189,8 +197,8 @@
   $button.on("click", function(e){
       showColor(e);
   });
-  $nameForm.on("click", function() {
-      $("#palette-name").val("");
+  $inputs.on("click", function() {
+      clearPaletteInput(event);
   });
   $copyButton.on("click", function(e) {
       clipBoard(e);
