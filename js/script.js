@@ -97,8 +97,9 @@
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
-        i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor, $deleteButton, $loadButton;
-      $("#swatches").html(""); 
+        i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor, $deleteButton, $loadButton, newWidth;
+      $("#swatches").empty(); 
+      $("#swatches").html("");
       for (i = 0; i < palettesLength; i++) {
           $swatches = $("#swatches");
           $swatch = $("<div class='swatch'></div>");

@@ -24,6 +24,13 @@ html {
   font-size: 14px;
   background-color: $background-color;
   overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#wrapper {
+  height: 50rem;
+  max-width: 80rem;
+  margin: 0 auto;
 }
 
 button {
@@ -75,49 +82,59 @@ div#palette-colors {
                 text-align: center;
             }
             .hash-version {
-                position: absolute;
-                left: 900rem;
+                position: fixed;
+                top: -900rem;
             }
         } 
 
     }  
 }
 #palette-maker {
-    margin: 1rem auto;
-    width: 15rem;
+    margin: 2rem auto;
+    background-color: $palette-swatch;
+    border: $std-border;
+    width: 16rem;
+    height: 7rem;
+    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
     input#palette-name {
-        width: 8rem;
+        text-align: center;
+        width: 13rem;
         display: block;
-        margin: 0 auto;
+        margin: 1.1rem auto;
+        font-size: 1.3rem;
     }
     button#save-palette {
-    
-    }
-    button#clear-palettes {
-    
+        @include linear-gradient(#1FA9FF, #1880C2)
     }
 }
+
 #swatches {
     height: 22rem;
-    width: inherit;
     width: 90%;
     margin: 1rem auto;
     border: $std-border;
-    height: 25rem;
+    height: 24rem;
     overflow-x: scroll;
+    overflow-y: hidden;
     white-space: nowrap; //keeps new swatches from adding below instead of to the right
-    background-color: $swatch-box;
-    //text-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+    background-color: transparent;
+    box-shadow: inset 0rem .5rem .5rem .1rem rgba(0, 0, 0, .5);
+    position: relative;
+
     .swatch {
         display: inline-block;
         position: relative;
         width: 10rem;
-        height: 16rem;
+        height: 15rem;
         border: $std-border;
         padding: 1rem;
         margin: 2rem 1rem;
         vertical-align: top;
-        
+        position: relative;
+        z-index: -2;
+        .load-swatch {
+            @include linear-gradient(#27B559, #1E8742)
+        }
         color: white;
         background-color: $palette-swatch;
         box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
@@ -126,17 +143,17 @@ div#palette-colors {
             font-size: 1.1rem;
             text-shadow: 0rem .1rem .1rem rgba(0, 0, 0, .5);
             text-align: center;
-            //overflow: hidden; //a word longer than 20char with no dashes, the excess is hidden
             white-space: normal; //so the title will wrap, like its defualt is supposed to
             word-wrap: break-word; //ensures long names with no spaces wrap regardless 
-            margin: 1rem auto;
-        }
+            position: static;
+        }  
         div.color0 {
             width: 7.1rem;
             height: 8rem;
             display: block;
             margin: 1rem auto;
             padding: .1rem;
+            border: $std-border;
         }
         div.color1 {
             height: 1.35rem;
@@ -154,14 +171,61 @@ div#palette-colors {
         }
         .remove-swatch {
             position: absolute;
-            top: 19rem;
+            top: 18.2rem;
             left: 2rem;
             @include linear-gradient(#870000, #610000);
-          &:active {
-            @include linear-gradient(#610000, #870000);
-          }
+            border: $std-border;
+            box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+            &:active {
+                @include linear-gradient(#610000, #870000);
+            }
         }
-    }  
+
+      }
+  
 }
+#back {
+    height: 24rem;
+    width: 90%;
+    margin: 1rem auto;
+    border: $std-border;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: relative;
+    top: -25.5rem;
+    z-index: -10;
+    background-color: $swatch-box;
+}
+#clear {
+    width: 10rem;
+    height: 4rem;
+    background-color: $palette-swatch;
+    margin: 1rem auto;
+    vertical-align: middle;
+    text-align: center;
+    border: $std-border;
+    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+    position: relative;
+    top: -25rem;
+    #clear-palettes {
+        position: relative;
+        top: .85rem;
+        @include linear-gradient(#222, #000000);
+        border: $std-border;
+        color: #BDBDBD;
+        
+        &:active {
+            @include linear-gradient(#610000, #870000);
+        }
+    } 
+}
+#footer {
+    background-color: $background-color;
+    width: 1rem;
+    height: 3rem;
+    position: relative;
+    top: -25rem;
+}
+
 
 
