@@ -25,6 +25,7 @@ button {
   width: 8rem;
   color: white;
   border: 3px solid #222;
+  text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
   background: color1;
   /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#666, #555);
@@ -136,26 +137,27 @@ div#palette-colors div.palette-container {
       background: -moz-linear-gradient(#27B559, #1E8742);
       /* For Firefox 3.6 to 15 */
       background: linear-gradient(#27B559, #1E8742);
-      /* Standard syntax */ }
-    #swatches .swatch h3 {
-      font-family: Helvetica, sans-serif;
-      font-size: 1.1rem;
-      text-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
-      text-align: center;
-      white-space: normal;
-      word-wrap: break-word;
-      position: static; }
-    #swatches .swatch div.color0 {
-      width: 7.1rem;
-      height: 8rem;
-      display: block;
-      margin: 1rem auto;
-      padding: .1rem;
-      border: 3px solid black; }
-    #swatches .swatch div.color1, #swatches .swatch div.color2, #swatches .swatch div.color3, #swatches .swatch div.color4 {
-      height: 1.35rem;
-      width: 6rem;
-      margin: .5rem auto; }
+      /* Standard syntax */
+      margin: 0 auto; }
+    #swatches .swatch div.mid {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 3.6rem; }
+      #swatches .swatch div.mid h3 {
+        font-family: Helvetica, sans-serif;
+        font-size: 1.1rem;
+        text-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+        text-align: center;
+        white-space: normal;
+        word-wrap: break-word; }
+    #swatches .swatch .swatch-colors {
+      border: .25rem solid #111;
+      width: 9rem;
+      height: 9rem;
+      margin: 1rem auto 0rem; }
+      #swatches .swatch .swatch-colors div.color0, #swatches .swatch .swatch-colors div.color1, #swatches .swatch .swatch-colors div.color2, #swatches .swatch .swatch-colors div.color3, #swatches .swatch .swatch-colors div.color4 {
+        height: 1.8rem; }
     #swatches .swatch .remove-swatch {
       position: absolute;
       top: 18.2rem;

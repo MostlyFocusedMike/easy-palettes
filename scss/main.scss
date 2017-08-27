@@ -42,6 +42,7 @@ button {
     width: 8rem;
     color: white;
     border: 3px solid #222;
+    text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, .5);
     @include linear-gradient(#666, #555); 
     &:active {
         @include linear-gradient(#444, #777);
@@ -132,42 +133,49 @@ div#palette-colors {
         vertical-align: top;
         position: relative;
         .load-swatch {
-            @include linear-gradient(#27B559, #1E8742)
+            @include linear-gradient(#27B559, #1E8742);
+            margin: 0 auto;
         }
         color: white;
         background-color: $palette-swatch;
         box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
-        h3 {
-            font-family: Helvetica, sans-serif;
-            font-size: 1.1rem;
-            text-shadow: 0rem .1rem .1rem rgba(0, 0, 0, .5);
-            text-align: center;
-            white-space: normal; //so the title will wrap, like its defualt is supposed to
-            word-wrap: break-word; //ensures long names with no spaces wrap regardless 
-            position: static;
-        }  
-        div.color0 {
-            width: 7.1rem;
-            height: 8rem;
-            display: block;
-            margin: 1rem auto;
-            padding: .1rem;
-            border: $std-border;
+        div.mid {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 3.6rem;
+            h3 {
+                font-family: Helvetica, sans-serif;
+                font-size: 1.1rem;
+                text-shadow: 0rem .1rem .1rem rgba(0, 0, 0, .5);
+                text-align: center;
+                white-space: normal; //so the title will wrap, like its defualt is supposed to
+                word-wrap: break-word; //ensures long names with no spaces wrap regardless 
+            }
         }
-        div.color1 {
-            height: 1.35rem;
-            width: 6rem;
-            margin: .5rem auto;
+        
+        .swatch-colors {
+            border: .25rem solid #111;
+            width: 9rem;
+            height: 9rem;
+            margin: 1rem auto 0rem;
+            div.color0 {
+                height: 1.8rem;
+            }
+            div.color1 {
+                @extend .color0
+            }
+            div.color2 {
+                @extend .color0;
+            }
+            div.color3 {
+                @extend .color0;
+            }
+            div.color4 {
+                @extend .color0;
+            }
         }
-        div.color2 {
-            @extend .color1;
-        }
-        div.color3 {
-            @extend .color1;
-        }
-        div.color4 {
-            @extend .color1;
-        }
+        
         .remove-swatch {
             position: absolute;
             top: 18.2rem;

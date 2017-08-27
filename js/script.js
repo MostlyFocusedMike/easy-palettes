@@ -97,7 +97,7 @@
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
-        i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor, $deleteButton, $loadButton, newWidth;
+        i, k, $background, $swatches, $swatch, paletteName, divId, $swatchColors, divClass, $newColor, $deleteButton, $loadButton, newWidth;
       $swatches = $("#swatches");
       $swatches.empty(); 
       for (i = 0; i < palettesLength; i++) {
@@ -105,23 +105,24 @@
           $swatch = $("<div class='swatch'></div>");
           paletteName = palettes[i][5];
           divId = paletteName  + "-col-" + palettes[i][0];
-          $newBackground = $("<div class='colorBlock color0' id='" + divId + "'></div>");
-          for (k = 1; k < 5; k++) {
+          $loadButton =  $("<button class='load-swatch'>Load Palette</button>").click(loadSwatch);
+          $swatchColors = $("<div class='swatch-colors' id='" + divId + "'></div>");
+          $swatch.append($loadButton);
+          for (k = 0; k < 5; k++) {
               divClass = "color" + k;
               divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color
               $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
-              $newBackground.append($newColor);
+              $swatchColors.append($newColor);
           }
-          $loadButton =  $("<button class='load-swatch'>Load Palette</button>").click(loadSwatch);
-          $swatch.append($loadButton);
-          $swatch.append($newBackground);
-          $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
+          
+          $swatch.append($swatchColors);
+          $swatch.append("<div class='mid'><h3 class='palette-name'>" + paletteName + "</h3></div>");
           $deleteButton = $("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
           $swatch.append($deleteButton);
           $swatch.hide().appendTo($swatches);
       }
       $(".swatch").each(function(i) {
-          $(this).delay(100 * i).fadeIn(500);
+          $(this).delay(200 * i).fadeIn(500);
       });
   }
 
@@ -174,7 +175,7 @@
         300,
         function() {
             $swatch.remove();
-        });
+      });
   }
   
   function clearPaletteInput(event) {
