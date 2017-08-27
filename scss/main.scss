@@ -117,8 +117,8 @@ div#palette-colors {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap; //keeps new swatches from adding below instead of to the right
-    background-color: transparent;
-    box-shadow: inset 0rem .5rem .5rem .1rem rgba(0, 0, 0, .5);
+    background-color: $swatch-box;
+    box-shadow: inset 0rem .5rem 1rem .1rem rgba(0, 0, 0, .5);
     position: relative;
 
     .swatch {
@@ -131,13 +131,12 @@ div#palette-colors {
         margin: 2rem 1rem;
         vertical-align: top;
         position: relative;
-        z-index: -2;
         .load-swatch {
             @include linear-gradient(#27B559, #1E8742)
         }
         color: white;
         background-color: $palette-swatch;
-        box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+        box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
         h3 {
             font-family: Helvetica, sans-serif;
             font-size: 1.1rem;
@@ -175,7 +174,7 @@ div#palette-colors {
             left: 2rem;
             @include linear-gradient(#870000, #610000);
             border: $std-border;
-            box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+            box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
             &:active {
                 @include linear-gradient(#610000, #870000);
             }
@@ -183,18 +182,6 @@ div#palette-colors {
 
       }
   
-}
-#back {
-    height: 24rem;
-    width: 90%;
-    margin: 1rem auto;
-    border: $std-border;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    position: relative;
-    top: -25.5rem;
-    z-index: -10;
-    background-color: $swatch-box;
 }
 #clear {
     width: 10rem;
@@ -206,7 +193,7 @@ div#palette-colors {
     border: $std-border;
     box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
     position: relative;
-    top: -25rem;
+    top: 2rem;
     #clear-palettes {
         position: relative;
         top: .85rem;
@@ -224,7 +211,7 @@ div#palette-colors {
     width: 1rem;
     height: 3rem;
     position: relative;
-    top: -25rem;
+    top: 2rem;
 }
 
 

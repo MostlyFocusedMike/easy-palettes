@@ -110,8 +110,8 @@ div#palette-colors div.palette-container {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  background-color: transparent;
-  box-shadow: inset 0rem 0.5rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+  background-color: #121212;
+  box-shadow: inset 0rem 0.5rem 1rem 0.1rem rgba(0, 0, 0, 0.5);
   position: relative; }
   #swatches .swatch {
     display: inline-block;
@@ -123,10 +123,9 @@ div#palette-colors div.palette-container {
     margin: 2rem 1rem;
     vertical-align: top;
     position: relative;
-    z-index: -2;
     color: white;
     background-color: #434343;
-    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+    box-shadow: 0rem 0.25rem 1rem rgba(0, 0, 0, 0.5); }
     #swatches .swatch .load-swatch {
       background: color1;
       /* For browsers that do not support gradients */
@@ -172,7 +171,7 @@ div#palette-colors div.palette-container {
       background: linear-gradient(#870000, #610000);
       /* Standard syntax */
       border: 3px solid black;
-      box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+      box-shadow: 0rem 0.25rem 1rem rgba(0, 0, 0, 0.5); }
       #swatches .swatch .remove-swatch:active {
         background: color1;
         /* For browsers that do not support gradients */
@@ -185,18 +184,6 @@ div#palette-colors div.palette-container {
         background: linear-gradient(#610000, #870000);
         /* Standard syntax */ }
 
-#back {
-  height: 24rem;
-  width: 90%;
-  margin: 1rem auto;
-  border: 3px solid black;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  position: relative;
-  top: -25.5rem;
-  z-index: -10;
-  background-color: #121212; }
-
 #clear {
   width: 10rem;
   height: 4rem;
@@ -207,7 +194,7 @@ div#palette-colors div.palette-container {
   border: 3px solid black;
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   position: relative;
-  top: -25rem; }
+  top: 2rem; }
   #clear #clear-palettes {
     position: relative;
     top: .85rem;
@@ -240,6 +227,6 @@ div#palette-colors div.palette-container {
   width: 1rem;
   height: 3rem;
   position: relative;
-  top: -25rem; }
+  top: 2rem; }
 
 /*# sourceMappingURL=styles.css.map */
