@@ -214,6 +214,19 @@
   $copyButton.on("click", function(e) {
       clipBoard(e);
   });
+  $nameForm.keypress(function(e) {
+      var key = e.which;
+      if(key === 13) {
+          addPalette();
+          createSwatches(loadSwatch, removeSwatch);
+          colorFillSwatches();
+      } 
+   });
+  $saveButton.on("click", function() {
+      addPalette();
+      createSwatches(loadSwatch, removeSwatch);
+      colorFillSwatches();
+  });
   $clearButton.on("click", function() {
       palettes.length = 0;
       localStorage.palettes = JSON.stringify(palettes);
@@ -223,10 +236,6 @@
       ///$("#swatches").html("");
       
   });
-  $saveButton.on("click", function() {
-      addPalette();
-      createSwatches(loadSwatch, removeSwatch);
-      colorFillSwatches();
-  }); 
+   
   
 }());
