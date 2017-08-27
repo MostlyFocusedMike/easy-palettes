@@ -98,10 +98,10 @@
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
         i, k, $background, $swatches, $swatch, paletteName, divId, $newBackground, divClass, $newColor, $deleteButton, $loadButton, newWidth;
-      $("#swatches").empty(); 
-      $("#swatches").html("");
+      $swatches = $("#swatches");
+      $swatches.empty(); 
       for (i = 0; i < palettesLength; i++) {
-          $swatches = $("#swatches");
+          
           $swatch = $("<div class='swatch'></div>");
           paletteName = palettes[i][5];
           divId = paletteName  + "-col-" + palettes[i][0];
@@ -118,9 +118,11 @@
           $swatch.append("<h3 class='palette-name'>" + paletteName + "</h3>");
           $deleteButton = $("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
           $swatch.append($deleteButton);
-          $swatches.append($swatch); 
-
+          $swatch.hide().appendTo($swatches);
       }
+      $(".swatch").each(function(i) {
+          $(this).delay(100 * i).fadeIn(500);
+      });
   }
 
 
@@ -165,7 +167,14 @@
     //window.alert(JSON.stringify(palettes));
     localStorage.palettes = JSON.stringify(palettes);
     //window.alert(JSON.stringify(localStorage.palettes));
-    $swatch.remove();
+    $swatch.animate({
+        top: '+=50', // increase by 50
+        opacity: 0.0
+        },
+        300,
+        function() {
+            $swatch.remove();
+        });
   }
   
   function clearPaletteInput(event) {
@@ -207,7 +216,11 @@
   $clearButton.on("click", function() {
       palettes.length = 0;
       localStorage.palettes = JSON.stringify(palettes);
-      $("#swatches").html("");
+      $($(".swatch").get().reverse()).each(function(i) {
+          $(this).delay(100 * i).fadeOut(500);
+      });
+      ///$("#swatches").html("");
+      
   });
   $saveButton.on("click", function() {
       addPalette();
