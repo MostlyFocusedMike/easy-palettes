@@ -21,48 +21,26 @@
           ["F24949","FCFF3B","36FF61","40A9FF","C74FFF","Rainbow"]
         ];
 
+      //if the variable exists, and it's not empty, load the saved palettes
       if ((localStorage.palettes) && (localStorage.palettes.length > 2)) {
           palettes = JSON.parse(localStorage.palettes);
-      } else {
+      } else { 
+          //otherwise, load the default palettes
           localStorage.palettes = JSON.stringify(palettes);
       }
       return palettes;
   }
-
-
-  function showColor(e) {
-  //When you click the show button, it sends an alert with the color of that section
-    var value = e.target.id,
-      colorValue = "colorValue" + value,
-      $color1 = $("#" + colorValue);
-
-    //window.alert($color1.val());
-  }
   
-
-  function findCurrentValues() {
-  //Proves that the program can read all values currently selected
-    var $colorValues = $(".colorValNum"),  
-      $msg = " ";
-    
-    $colorValues.each(function() {
-      $msg += " " + $(this).val();
-      
-    });
-    //window.alert($msg);
-  }
   
-
   function clipBoard(e) {
-  //function that copies each hash value
-    var targetValue =  e.target.id, //each copy button's id corresponds to the color value 
-      $copyTextarea = $('#color-' + targetValue), //makes the id of the hash or non-hash version
-      $hashInput = $('#color-' + targetValue.slice(0, 7) + "-hex"), //selects the hash input always
-      $hashValue = $('#color-' + targetValue.slice(0, 7)).val(), 
-      successful;
+  //function that copies the value of the hexcode with or without a # infront
+    var buttonValue =  e.target.id, //each copy button's id corresponds to the id of the # or non-# version of the input 
+      $copyTextarea = $('#color-' + buttonValue), //this creates the id of the hash or non-hash version
+      $hexValue = $('#color-' + buttonValue.slice(0, 7)).val(), //finds val of color hexcode input
+      $hashInput = $('#color-' + buttonValue.slice(0, 7) + "-hex"); //gets the hash input element
     
-    $hashInput.val("#" + $hashValue);
-    $copyTextarea.select(); //this selects the text inside the input field for copying
+    $hashInput.val("#" + $hexValue); //sets the hash version up in case it needs to be copied
+    $copyTextarea.select(); //this selects the text inside the one of the fields for copying
     
     try { //it's good practice to put execCommands in try catch blocks
       document.execCommand('copy'); //no need to check for malicious code, color.js does
@@ -71,36 +49,49 @@
     }
   }
 
+  
+  function clearPaletteInput(event) {
+  //overcomes jscolor to clear input in case user wants to paste in number
+    var $input = $(event.target);
+    
+    $input.focus();
+    $input.val("");
+  }
+  
+  
   function addPalette() {
   //Add the colors you have to the palette localStorage variable
-      var $name = $("#palette-name").val(),
+      var $name = $("#palette-name"),
+        $nameVal = $name.val(),
         $colorBackground = $("#color-value-0").val(),
         $color1 = $("#color-value-1").val(),
         $color2 = $("#color-value-2").val(),
         $color3 = $("#color-value-3").val(),
         $color4 = $("#color-value-4").val(),
         palettes = JSON.parse(localStorage.palettes),
-        palette = [$colorBackground, $color1, $color2, $color3, $color4, $name],
+        palettesLength = palettes.length,
+        palette = [$colorBackground, $color1, $color2, $color3, $color4, $nameVal],
         i;
-      //window.alert(JSON.stringify(localStorage.palettes));
-      
-      if ($name === "Palette Name Here" || $name === "") {
+    
+      //checks if the user entered a name or not
+      if ($nameVal === "Palette Name Here" || $nameVal === "") {
           window.alert("Don't forget to name your palette!");
-          $("#palette-name").val("").focus();
-          return;
+          $name.val("").focus();
+          return false;
       }
       //if there's a match, it's updated instead of creating a new entry
-      for (i = 0; i < palettes.length; i++) {
+      for (i = 0; i < palettesLength; i++) {
           if ($name === palettes[i][5]) {
               palettes[i] = palette;
               localStorage.palettes = JSON.stringify(palettes);
-              return; 
+              return true; 
           }
       } 
       palettes.unshift(palette); //unshift to add the palette to the front of the array
       localStorage.palettes = JSON.stringify(palettes);
        //window.alert(palettes.length);
-      $("#palette-name").val("Palette Name Here"); 
+      $name.val("Palette Name Here"); 
+      return true;
   }
 
 
@@ -108,20 +99,25 @@
   //Create the divs that make up the swatches of the palettes
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
-        i, k, $background, $swatches, $swatch, paletteName, divId, $swatchColors, divClass, $newColor, $deleteButton, $loadButton, newWidth;
-      $swatches = $("#swatches");
+        $swatches = $("#swatches"),
+        i, $swatch, paletteName, divId, $loadButton, $swatchColors,
+        k, colorClass, $newColor, $deleteButton, 
+        $color;
+      
       $swatches.empty(); 
       for (i = 0; i < palettesLength; i++) { 
           $swatch = $("<div class='swatch'></div>");
           paletteName = palettes[i][5];
           divId = paletteName  + "-col-" + palettes[i][0];
           $loadButton =  $("<button class='load-swatch'>Load Palette</button>").click(loadSwatch);
-          $swatchColors = $("<div class='swatch-colors' id='" + divId + "'></div>");
           $swatch.append($loadButton);
+        
+          //creating the group of 5 colors 
+          $swatchColors = $("<div class='swatch-colors' id='" + divId + "'></div>");
           for (k = 0; k < 5; k++) {
-              divClass = "color" + k;
+              colorClass = "color" + k;
               divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color
-              $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
+              $newColor = $("<div class='color-block " + colorClass + "' id='" + divId + "' ></div>");    
               $swatchColors.append($newColor);
           }
           $swatch.append($swatchColors);
@@ -129,39 +125,33 @@
           $deleteButton = $("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
           $swatch.append($deleteButton);
           $swatch.hide().appendTo($swatches);
-          $(".palette-name").eq(i).text(paletteName);
+          $(".palette-name").eq(i).text(paletteName); //keeps user entered HTML from causing problems
       }
+      //fade in animation
       $(".swatch").each(function(i) {
           $(this).delay(100 * i).fadeIn(500);
       });
-      
-  }
-
-
-  function colorFillSwatches() {
-  //once the swatches are created they are colored
-      $(".colorBlock").each(function () {  
-          var $color = "#" + $(this).attr("id").toString().slice(-6);
+    
+      //colors in each of the color blocks now that they are created
+      $(".color-block").each(function () {  
+          $color = "#" + $(this).attr("id").toString().slice(-6);
           //window.alert($color); 
           $(this).css("background-color", $color);
       }); 
   }
 
-
+  
   function loadSwatch() {
   //Load selected swatch into five main colors 
     var $button = $(event.target),
         $swatch = $button.parent(),
         $swatches = $(".swatch"),
         $index = $swatches.index($swatch),
-        palettes = JSON.parse(localStorage.palettes);
-    //the .focus is needed beacuse jscolor will only update the 
-     //the styleElement if the value element has focus
-    $("#color-value-0").val(palettes[$index][0]).focus(); 
-    $("#color-value-1").val(palettes[$index][1]).focus();       
-    $("#color-value-2").val(palettes[$index][2]).focus();
-    $("#color-value-3").val(palettes[$index][3]).focus();
-    $("#color-value-4").val(palettes[$index][4]).focus();   
+        palettes = JSON.parse(localStorage.palettes), i;
+    //focus is needed since jscolor only updates the the styleElement if the valueElement focus
+    for (i = 0; i < 5; i++) {
+        $("#color-value-" + i).val(palettes[$index][i]).focus(); 
+    }
     $("#palette-name").val(palettes[$index][5]).focus();
   }
 
@@ -175,74 +165,61 @@
         palettes = JSON.parse(localStorage.palettes);
    
     palettes.splice($index, 1);
-    //window.alert($index);
-    //window.alert(JSON.stringify(palettes));
     localStorage.palettes = JSON.stringify(palettes);
-    //window.alert(JSON.stringify(localStorage.palettes));
-    $swatch.animate({
-        top: '+=50', // increase by 50
-        opacity: 0.0
-        },
-        300,
+    $swatch.animate(
+        {top: '+=50', opacity: 0.0}, 300,
         function() {
             $swatch.remove();
-      });
-  }
-  
-  function clearPaletteInput(event) {
-  //overcomes jscolor to clear input in case user wants to paste in number
-    var $input = $(event.target);
-    
-    $input.focus();
-    $input.val("");
+    });
   }
 
   
+  function clearSwatches(palettes) {
+      palettes.length = 0;
+      localStorage.palettes = JSON.stringify(palettes);
+      $(".swatch").fadeOut(700);
+  }
   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   //MAIN PROGRAM BELOW////////////////////////////////////////////////////////////
  
-  var $button = $(".show"),
-    $copyButton = $(".copy-button"),
+  var $copyButton = $(".copy-button"),
     $saveButton = $("#save-palette"),
     $clearButton = $("#clear-palettes"),
     $nameForm = $("#palette-name"),
     $inputs = $("input"),
-    $jsColor = $(".jscolor"),
-    palettes = checkStorage();
+    palettes = checkStorage(),
+    key;
     
   $(createSwatches(loadSwatch, removeSwatch));
-  $(colorFillSwatches());
 
-  $button.on("click", function(e){
-      showColor(e);
-  });
-  $inputs.on("click", function() {
-      clearPaletteInput(event);
-  });
   $copyButton.on("click", function(e) {
       clipBoard(e);
   });
+  
+  $inputs.on("click", function(event) {
+      clearPaletteInput(event);
+  });
+  
   $nameForm.keypress(function(event) {
-      var key = event.which;
+      key = event.which;
       if(key === 13) {
-          addPalette(); //todo add true check to see if need to reload palettes when fail
-          createSwatches(loadSwatch, removeSwatch);
-          colorFillSwatches();
+          if (addPalette()) {
+              createSwatches(loadSwatch, removeSwatch);
+          }
       } 
    });
+  
   $saveButton.on("click", function() {
-      addPalette();
-      createSwatches(loadSwatch, removeSwatch);
-      colorFillSwatches();
+      if (addPalette()) {
+          createSwatches(loadSwatch, removeSwatch);
+      }  
   });
+  
   $clearButton.on("click", function() {
-      palettes.length = 0;
-      localStorage.palettes = JSON.stringify(palettes);
-      $(".swatch").fadeOut(500);
+      clearSwatches(palettes);
   });
-   
   
 }());
