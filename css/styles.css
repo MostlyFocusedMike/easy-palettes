@@ -26,7 +26,7 @@ button {
   color: white;
   border: 3px solid #222;
   text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
-  background: color1;
+  background: #777;
   /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#777, #444);
   /* For Safari 5.1 to 6.0 */
@@ -39,7 +39,7 @@ button {
   button:hover {
     color: #A3D3FF; }
   button:active {
-    background: color1;
+    background: #444;
     /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#444, #777);
     /* For Safari 5.1 to 6.0 */
@@ -50,12 +50,15 @@ button {
     background: linear-gradient(#444, #777);
     /* Standard syntax */ }
 
+input {
+  border-radius: none; }
+
 div.header {
   position: fixed;
   z-index: 10;
   height: 3.3rem;
   width: 100%;
-  background: color1;
+  background: #222;
   /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#222, #111);
   /* For Safari 5.1 to 6.0 */
@@ -138,9 +141,9 @@ div#palette-colors div.palette-container {
     div#palette-colors div.palette-container .palette-buttons input {
       padding: 0rem;
       width: 5rem;
-      height: 1.3rem;
-      margin: .5rem 2rem .2rem;
-      font-size: 1rem;
+      height: 1.4rem;
+      margin: .35rem 2rem .2rem;
+      font-size: 1.2rem;
       background-color: #efefef;
       text-align: center; }
     div#palette-colors div.palette-container .palette-buttons .hash-version {
@@ -161,7 +164,7 @@ div#palette-colors div.palette-container {
     text-align: center;
     font-size: 1.3rem; }
   #palette-maker button#save-palette {
-    background: color1;
+    background: #1FA9FF;
     /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#1FA9FF, #1880C2);
     /* For Safari 5.1 to 6.0 */
@@ -174,7 +177,7 @@ div#palette-colors div.palette-container {
     #palette-maker button#save-palette:hover {
       color: #BAD7FF; }
     #palette-maker button#save-palette:active {
-      background: color1;
+      background: #1880C2;
       /* For browsers that do not support gradients */
       background: -webkit-linear-gradient(#1880C2, #1FA9FF);
       /* For Safari 5.1 to 6.0 */
@@ -222,7 +225,7 @@ div#palette-colors div.palette-container {
     background-color: #434343;
     box-shadow: 0rem 0.25rem 1rem rgba(0, 0, 0, 0.5); }
     #swatches .swatch .load-swatch {
-      background: color1;
+      background: #27B559;
       /* For browsers that do not support gradients */
       background: -webkit-linear-gradient(#27B559, #1E8742);
       /* For Safari 5.1 to 6.0 */
@@ -236,7 +239,7 @@ div#palette-colors div.palette-container {
       #swatches .swatch .load-swatch:hover {
         color: #A8FFAA; }
       #swatches .swatch .load-swatch:active {
-        background: color1;
+        background: #1E8742;
         /* For browsers that do not support gradients */
         background: -webkit-linear-gradient(#1E8742, #27B559);
         /* For Safari 5.1 to 6.0 */
@@ -268,7 +271,7 @@ div#palette-colors div.palette-container {
       position: absolute;
       top: 18.2rem;
       left: 2rem;
-      background: color1;
+      background: #870000;
       /* For browsers that do not support gradients */
       background: -webkit-linear-gradient(#870000, #610000);
       /* For Safari 5.1 to 6.0 */
@@ -283,7 +286,7 @@ div#palette-colors div.palette-container {
       #swatches .swatch .remove-swatch:hover {
         color: #F2B5B5; }
       #swatches .swatch .remove-swatch:active {
-        background: color1;
+        background: #610000;
         /* For browsers that do not support gradients */
         background: -webkit-linear-gradient(#610000, #870000);
         /* For Safari 5.1 to 6.0 */
@@ -308,7 +311,7 @@ div#palette-colors div.palette-container {
   #clear #clear-palettes {
     position: relative;
     top: .9rem;
-    background: color1;
+    background: #222;
     /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#222, #000000);
     /* For Safari 5.1 to 6.0 */
@@ -323,7 +326,7 @@ div#palette-colors div.palette-container {
     #clear #clear-palettes:hover {
       color: #F23333; }
     #clear #clear-palettes:active {
-      background: color1;
+      background: #000;
       /* For browsers that do not support gradients */
       background: -webkit-linear-gradient(#000, #222);
       /* For Safari 5.1 to 6.0 */

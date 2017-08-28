@@ -10,7 +10,7 @@ $basic-shad: 0rem .5rem 1rem rgba(0, 0, 0, .5);
 }
 
 @mixin linear-gradient($color1, $color2) {
-    background: color1; /* For browsers that do not support gradients */
+    background: $color1; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
@@ -52,6 +52,10 @@ button {
     &:active {
         @include linear-gradient(#444, #777);
     }
+}
+
+input {
+    border-radius: none;
 }
 
 //MAIN CODE//////////////////////////////////////////////////////////////////////////////////////
@@ -144,9 +148,9 @@ div#palette-colors {
             input {
                 padding: 0rem;
                 width: 5rem;
-                height: 1.3rem;
-                margin: .5rem 2rem .2rem;
-                font-size: 1rem;
+                height: 1.4rem;
+                margin: .35rem 2rem .2rem;
+                font-size: 1.2rem;
                 background-color: #efefef;
                 text-align: center;
             }
