@@ -9,68 +9,8 @@ html, body {
   font-size: 14px;
   background-color: #1F1F1F;
   overflow-x: hidden;
-  overflow-y: scroll; }
-
-div.header {
-  position: fixed;
-  z-index: 10;
-  height: 3.3rem;
-  width: 100%;
-  background: color1;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#222, #111);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#222, #111);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#222, #111);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#222, #111);
-  /* Standard syntax */
-  will-change: transform; }
-  div.header #logo {
-    float: left;
-    margin-left: 5%; }
-    div.header #logo h1 {
-      color: white;
-      font-family: Helvetica, sans-serif;
-      font-weight: 100;
-      font-style: normal;
-      font-size: 1.5rem;
-      width: 10rem;
-      text-align: center;
-      margin: 5px 10px 0 10px; }
-    div.header #logo #underline-left {
-      background-color: white;
-      height: 2px;
-      width: 2.3rem;
-      position: relative;
-      margin: 0 auto;
-      left: -3.3rem;
-      top: -2px; }
-    div.header #logo #underline-right {
-      background-color: white;
-      height: 2px;
-      width: 6rem;
-      position: relative;
-      margin: 0 auto;
-      left: 1.6rem;
-      top: -4px; }
-    div.header #logo #rainbow {
-      position: relative;
-      width: 120px;
-      height: 2px;
-      position: relative;
-      top: -2px;
-      left: 21px;
-      background: linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF); }
-    div.header #logo #white-line {
-      position: relative;
-      width: 126px;
-      height: 2px;
-      position: relative;
-      top: 0px;
-      left: 18px;
-      background-color: white; }
+  overflow-y: scroll;
+  font-family: helvetica, sans-serif; }
 
 #wrapper {
   max-width: 80rem;
@@ -96,6 +36,8 @@ button {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(#777, #444);
   /* Standard syntax */ }
+  button:hover {
+    color: #A3D3FF; }
   button:active {
     background: color1;
     /* For browsers that do not support gradients */
@@ -108,16 +50,84 @@ button {
     background: linear-gradient(#444, #777);
     /* Standard syntax */ }
 
+div.header {
+  position: fixed;
+  z-index: 10;
+  height: 3.3rem;
+  width: 100%;
+  background: color1;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#222, #111);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#222, #111);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#222, #111);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#222, #111);
+  /* Standard syntax */ }
+  div.header #logo {
+    float: left;
+    margin-left: 5%; }
+    div.header #logo h1 {
+      color: white;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 1.5rem;
+      width: 10rem;
+      text-align: center;
+      margin: .4rem .8rem 0 .7rem; }
+      div.header #logo h1:hover {
+        color: #BAD7FF; }
+      div.header #logo h1:active {
+        color: #40A9FF; }
+    div.header #logo #underline-left {
+      background-color: white;
+      height: 2px;
+      width: 2.3rem;
+      position: relative;
+      margin: 0 auto;
+      left: -3.3rem;
+      top: -2px; }
+    div.header #logo #underline-right {
+      background-color: white;
+      height: 2px;
+      width: 6rem;
+      position: relative;
+      margin: 0 auto;
+      left: 1.55rem;
+      top: -4px; }
+    div.header #logo #rainbow {
+      position: relative;
+      width: 8.55rem;
+      height: 2px;
+      position: relative;
+      top: -2px;
+      left: 1.5rem;
+      background: #40A9FF;
+      /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF);
+      /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF);
+      /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF);
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF); }
+    div.header #logo #white-line {
+      position: relative;
+      width: 9rem;
+      height: 2px;
+      position: relative;
+      left: 1.28rem;
+      background-color: white; }
+
 div#palette-colors div.palette-container {
   border: 3px solid black;
-  width: rem;
   margin: .25rem 1rem;
-  padding: 0px;
+  padding: 0rem;
   background-color: #434343;
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
   div#palette-colors div.palette-container .color-preview {
     position: relative;
-    left: 0rem;
     width: 7rem;
     height: 7rem;
     text-align: center; }
@@ -126,7 +136,7 @@ div#palette-colors div.palette-container {
     padding: 0rem 1rem 0rem 1rem;
     border-left: 3px solid black; }
     div#palette-colors div.palette-container .palette-buttons input {
-      padding: 0px;
+      padding: 0rem;
       width: 5rem;
       height: 1.3rem;
       margin: .5rem 2rem .2rem;
@@ -142,13 +152,13 @@ div#palette-colors div.palette-container {
   background-color: #434343;
   border: 3px solid black;
   width: 16rem;
-  height: 7rem;
+  height: 9.5rem;
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5); }
   #palette-maker input#palette-name {
-    text-align: center;
-    width: 13rem;
     display: block;
+    width: 13rem;
     margin: 1.1rem auto;
+    text-align: center;
     font-size: 1.3rem; }
   #palette-maker button#save-palette {
     background: color1;
@@ -161,9 +171,34 @@ div#palette-colors div.palette-container {
     /* For Firefox 3.6 to 15 */
     background: linear-gradient(#1FA9FF, #1880C2);
     /* Standard syntax */ }
+    #palette-maker button#save-palette:hover {
+      color: #BAD7FF; }
+    #palette-maker button#save-palette:active {
+      background: color1;
+      /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(#1880C2, #1FA9FF);
+      /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(#1880C2, #1FA9FF);
+      /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(#1880C2, #1FA9FF);
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(#1880C2, #1FA9FF);
+      /* Standard syntax */ }
+  #palette-maker a {
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+    color: white; }
+    #palette-maker a:link {
+      color: white; }
+    #palette-maker a:visited {
+      color: #FFFFFF; }
+    #palette-maker a:hover {
+      color: #BAD7FF; }
+    #palette-maker a:active {
+      color: #40A9FF; }
 
 #swatches {
-  height: 22rem;
   width: 90%;
   margin: 1rem auto;
   border: 3px solid black;
@@ -176,7 +211,6 @@ div#palette-colors div.palette-container {
   position: relative; }
   #swatches .swatch {
     display: inline-block;
-    position: relative;
     width: 10rem;
     height: 15rem;
     border: 3px solid black;
@@ -199,18 +233,19 @@ div#palette-colors div.palette-container {
       background: linear-gradient(#27B559, #1E8742);
       /* Standard syntax */
       margin: 0 auto; }
-    #swatches .swatch div.mid {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 3.6rem; }
-      #swatches .swatch div.mid h3 {
-        font-family: Helvetica, sans-serif;
-        font-size: 1.1rem;
-        text-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
-        text-align: center;
-        white-space: normal;
-        word-wrap: break-word; }
+      #swatches .swatch .load-swatch:hover {
+        color: #A8FFAA; }
+      #swatches .swatch .load-swatch:active {
+        background: color1;
+        /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(#1E8742, #27B559);
+        /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#1E8742, #27B559);
+        /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#1E8742, #27B559);
+        /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#1E8742, #27B559);
+        /* Standard syntax */ }
     #swatches .swatch .swatch-colors {
       border: .25rem solid #111;
       width: 9rem;
@@ -218,6 +253,17 @@ div#palette-colors div.palette-container {
       margin: 1rem auto 0rem; }
       #swatches .swatch .swatch-colors div.color0, #swatches .swatch .swatch-colors div.color1, #swatches .swatch .swatch-colors div.color2, #swatches .swatch .swatch-colors div.color3, #swatches .swatch .swatch-colors div.color4 {
         height: 1.8rem; }
+    #swatches .swatch div.mid {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 3.6rem; }
+      #swatches .swatch div.mid h3 {
+        font-size: 1.1rem;
+        text-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+        text-align: center;
+        white-space: normal;
+        word-wrap: break-word; }
     #swatches .swatch .remove-swatch {
       position: absolute;
       top: 18.2rem;
@@ -234,6 +280,8 @@ div#palette-colors div.palette-container {
       /* Standard syntax */
       border: 3px solid black;
       box-shadow: 0rem 0.25rem 1rem rgba(0, 0, 0, 0.5); }
+      #swatches .swatch .remove-swatch:hover {
+        color: #F2B5B5; }
       #swatches .swatch .remove-swatch:active {
         background: color1;
         /* For browsers that do not support gradients */
@@ -259,7 +307,7 @@ div#palette-colors div.palette-container {
   top: 2rem; }
   #clear #clear-palettes {
     position: relative;
-    top: .85rem;
+    top: .9rem;
     background: color1;
     /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#222, #000000);
@@ -272,16 +320,18 @@ div#palette-colors div.palette-container {
     /* Standard syntax */
     border: 3px solid black;
     color: #BDBDBD; }
+    #clear #clear-palettes:hover {
+      color: #F23333; }
     #clear #clear-palettes:active {
       background: color1;
       /* For browsers that do not support gradients */
-      background: -webkit-linear-gradient(#610000, #870000);
+      background: -webkit-linear-gradient(#000, #222);
       /* For Safari 5.1 to 6.0 */
-      background: -o-linear-gradient(#610000, #870000);
+      background: -o-linear-gradient(#000, #222);
       /* For Opera 11.1 to 12.0 */
-      background: -moz-linear-gradient(#610000, #870000);
+      background: -moz-linear-gradient(#000, #222);
       /* For Firefox 3.6 to 15 */
-      background: linear-gradient(#610000, #870000);
+      background: linear-gradient(#000, #222);
       /* Standard syntax */ }
 
 #footer {

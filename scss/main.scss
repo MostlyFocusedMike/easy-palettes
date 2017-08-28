@@ -1,9 +1,8 @@
 $std-border: 3px solid black;
-$square: 200px;
 $background-color: #1F1F1F;
 $palette-swatch: #434343;
-$swatch-box: #121212;
-
+$rainbow: 90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF;
+$basic-shad: 0rem .5rem 1rem rgba(0, 0, 0, .5);
 %flexy {
     display: flex;
     flex-wrap: wrap;
@@ -18,84 +17,22 @@ $swatch-box: #121212;
     background: linear-gradient($color1, $color2); /* Standard syntax */
 }
 
-@mixin rotation($rotate) {
-    -ms-transform: rotateY($rotate); /* IE 9 */
-    -webkit-transform: rotateY($rotate); /* Chrome, Safari, Opera */
-    transform: rotateY($rotate);
-}
+///GENERAL RULES/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 html, body {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  background-color: $background-color;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-div.header {
-  position: fixed;
-  z-index: 10;
-  height: 3.3rem;
-  width: 100%;
-  @include linear-gradient(#222, #111);
-  will-change: transform;
-  #logo {
-      float: left;
-      margin-left: 5%;
-      h1 {
-          color: white;
-          font-family:  Helvetica, sans-serif;
-          font-weight: 100;
-          font-style: normal;
-          font-size: 1.5rem;
-          width: 10rem;
-          text-align: center;
-          margin: 5px 10px 0 10px;
-      }
-      #underline-left {
-          background-color: white;
-          height: 2px;
-          width: 2.3rem;
-          position: relative;
-          margin: 0 auto;
-          left: -3.3rem;
-          top: -2px;
-      }
-      #underline-right {
-          background-color: white;
-          height: 2px;
-          width: 6rem;
-          position: relative;
-          margin: 0 auto;
-          left: 1.6rem;
-          top: -4px;
-      }
-      #rainbow {
-          position: relative;
-          width: 120px;
-          height: 2px;
-          position: relative;
-          top: -2px;
-          left: 21px;
-          background: linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF); 
-      }
-      #white-line {
-          position: relative;
-          width: 126px;
-          height: 2px;
-          position: relative;
-          top: 0px;
-          left: 18px;
-          background-color: white;
-      }
-  }
-
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: $background-color;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: helvetica, sans-serif;
 }
 
 #wrapper {
-  max-width: 80rem;
-  margin: 3.5rem auto 3rem;
+    max-width: 80rem;
+    margin: 3.5rem auto 3rem;
 }
 
 button {
@@ -109,37 +46,103 @@ button {
     border: 3px solid #222;
     text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, .5);
     @include linear-gradient(#777, #444); 
+    &:hover {
+        color: #A3D3FF;
+    }
     &:active {
         @include linear-gradient(#444, #777);
     }
 }
 
+//MAIN CODE//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+div.header {
+    position: fixed;
+    z-index: 10;
+    height: 3.3rem;
+    width: 100%;
+    @include linear-gradient(#222, #111);
+    #logo {
+        float: left;
+        margin-left: 5%;
+        h1 {
+            color: white;
+            font-weight: 100;
+            font-style: normal;
+            font-size: 1.5rem;
+            width: 10rem;
+            text-align: center;
+            margin: .4rem .8rem 0 .7rem;
+            &:hover {
+                color: #BAD7FF;
+            }
+            &:active {
+                color: #40A9FF;
+            }
+        }
+        #underline-left {
+            background-color: white;
+            height: 2px;
+            width: 2.3rem;
+            position: relative;
+            margin: 0 auto;
+            left: -3.3rem;
+            top: -2px;
+        }
+        #underline-right {
+            background-color: white;
+            height: 2px;
+            width: 6rem;
+            position: relative;
+            margin: 0 auto;
+            left: 1.55rem;
+            top: -4px;
+        }
+        #rainbow {
+            position: relative;
+            width: 8.55rem;
+            height: 2px;
+            position: relative;
+            top: -2px;
+            left: 1.5rem;
+            background: #40A9FF; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient($rainbow); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient($rainbow); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient($rainbow); /* For Firefox 3.6 to 15 */
+            background: linear-gradient($rainbow); 
+        }
+        #white-line {
+            position: relative;
+            width: 9rem;
+            height: 2px;
+            position: relative;
+            left: 1.28rem;
+            background-color: white;
+        }
+    }
+}
 
 div#palette-colors {
     @extend %flexy;
     div.palette-container {
         @extend %flexy;
         border: $std-border;
-        width: rem;
         margin: .25rem 1rem;
-        padding: 0px;
+        padding: 0rem;
         background-color: $palette-swatch;
-        box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+        box-shadow: $basic-shad;
         .color-preview {
             position: relative;
-            left: 0rem;
             width: 7rem;
             height: 7rem;
             text-align: center;
-            
-
         }
         .palette-buttons {
             float: right;
             padding: 0rem 1rem 0rem 1rem;
             border-left: $std-border;
             input {
-                padding: 0px;
+                padding: 0rem;
                 width: 5rem;
                 height: 1.3rem;
                 margin: .5rem 2rem .2rem;
@@ -152,30 +155,54 @@ div#palette-colors {
                 top: -900rem;
             }
         } 
-
     }  
 }
+
 #palette-maker {
     margin: 2rem auto;
     background-color: $palette-swatch;
     border: $std-border;
     width: 16rem;
-    height: 7rem;
-    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+    height: 9.5rem;
+    box-shadow: $basic-shad;
     input#palette-name {
-        text-align: center;
-        width: 13rem;
         display: block;
+        width: 13rem;
         margin: 1.1rem auto;
+        text-align: center;
         font-size: 1.3rem;
     }
     button#save-palette {
-        @include linear-gradient(#1FA9FF, #1880C2)
+        @include linear-gradient(#1FA9FF, #1880C2);
+        &:hover {
+            color: #BAD7FF;
+        }
+        &:active {
+            @include linear-gradient(#1880C2, #1FA9FF);
+        }
+    }
+    a {
+        margin-top: 1rem;
+        display: block;
+        text-align: center;
+        
+        color: white;
+        &:link {
+            color: white;
+        }
+        &:visited {
+            color: #FFFFFF;
+        }
+        &:hover {
+            color: #BAD7FF;
+        }
+        &:active {
+            color: #40A9FF;
+        }
     }
 }
 
 #swatches {
-    height: 22rem;
     width: 90%;
     margin: 1rem auto;
     border: $std-border;
@@ -183,13 +210,11 @@ div#palette-colors {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap; //keeps new swatches from adding below instead of to the right
-    background-color: $swatch-box;
+    background-color: #121212;
     box-shadow: inset 0rem .5rem 1rem .1rem rgba(0, 0, 0, .5);
     position: relative;
-
     .swatch {
         display: inline-block;
-        position: relative;
         width: 10rem;
         height: 15rem;
         border: $std-border;
@@ -197,28 +222,19 @@ div#palette-colors {
         margin: 2rem 1rem;
         vertical-align: top;
         position: relative;
-        .load-swatch {
-            @include linear-gradient(#27B559, #1E8742);
-            margin: 0 auto;
-        }
         color: white;
         background-color: $palette-swatch;
         box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
-        div.mid {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 3.6rem;
-            h3 {
-                font-family: Helvetica, sans-serif;
-                font-size: 1.1rem;
-                text-shadow: 0rem .1rem .1rem rgba(0, 0, 0, .5);
-                text-align: center;
-                white-space: normal; //so the title will wrap, like its defualt is supposed to
-                word-wrap: break-word; //ensures long names with no spaces wrap regardless 
+        .load-swatch {
+            @include linear-gradient(#27B559, #1E8742);
+            margin: 0 auto;
+            &:hover {
+                color: #A8FFAA;
+            }
+            &:active {
+                @include linear-gradient(#1E8742, #27B559);
             }
         }
-        
         .swatch-colors {
             border: .25rem solid #111;
             width: 9rem;
@@ -240,7 +256,19 @@ div#palette-colors {
                 @extend .color0;
             }
         }
-        
+        div.mid {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 3.6rem;
+            h3 {
+                font-size: 1.1rem;
+                text-shadow: 0rem .1rem .1rem rgba(0, 0, 0, .5);
+                text-align: center;
+                white-space: normal; //so the title will wrap, like its defualt is supposed to
+                word-wrap: break-word; //ensures long names with no spaces wrap regardless 
+            }
+        }
         .remove-swatch {
             position: absolute;
             top: 18.2rem;
@@ -248,14 +276,16 @@ div#palette-colors {
             @include linear-gradient(#870000, #610000);
             border: $std-border;
             box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
+            &:hover {
+                color: #F2B5B5;
+            }
             &:active {
                 @include linear-gradient(#610000, #870000);
             }
         }
-
-      }
-  
+    }
 }
+
 #clear {
     width: 10rem;
     height: 4rem;
@@ -264,21 +294,24 @@ div#palette-colors {
     vertical-align: middle;
     text-align: center;
     border: $std-border;
-    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+    box-shadow: $basic-shad;
     position: relative;
     top: 2rem;
     #clear-palettes {
         position: relative;
-        top: .85rem;
+        top: .9rem;
         @include linear-gradient(#222, #000000);
         border: $std-border;
         color: #BDBDBD;
-        
+        &:hover {
+          color: #F23333
+        }
         &:active {
-            @include linear-gradient(#610000, #870000);
+            @include linear-gradient(#000, #222);
         }
     } 
 }
+
 #footer {
     background-color: $background-color;
     width: 1rem;
@@ -286,6 +319,3 @@ div#palette-colors {
     position: relative;
     top: 2rem;
 }
-
-
-
