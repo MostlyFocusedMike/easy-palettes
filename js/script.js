@@ -8,8 +8,7 @@
 
   function checkStorage() {
   //at the start of the program, it checks to see if there are any saved palettes
-      var loadedContent = JSON.parse(localStorage.palettes),
-        palettes = [
+      var palettes = [
           ["395ABD","84CEEB","5AB9EA","C1C8E4","8860D0","Clean and Energetic"],
           ["59253A","78244C","895061","0677A1","2D4159","Unique Combination"],
           ["026670","9FEDD7","FEF9C7","FCE181","EDEAE5","Lively Yet Soothing"],
@@ -22,8 +21,8 @@
           ["F24949","FCFF3B","36FF61","40A9FF","C74FFF","Rainbow"]
         ];
 
-      if ((loadedContent.length >= 1) || (loadedContent === "undefined")) {
-          palettes = loadedContent;
+      if (localStorage.palettes) {
+          palettes = JSON.parse(localStorage.palettes);
       } else {
           localStorage.palettes = JSON.stringify(palettes);
       }
