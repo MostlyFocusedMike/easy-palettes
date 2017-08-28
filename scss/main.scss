@@ -18,7 +18,13 @@ $swatch-box: #121212;
     background: linear-gradient($color1, $color2); /* Standard syntax */
 }
 
-html {
+@mixin rotation($rotate) {
+    -ms-transform: rotateY($rotate); /* IE 9 */
+    -webkit-transform: rotateY($rotate); /* Chrome, Safari, Opera */
+    transform: rotateY($rotate);
+}
+
+html, body {
   margin: 0;
   padding: 0;
   font-size: 14px;
@@ -27,10 +33,68 @@ html {
   overflow-y: scroll;
 }
 
+div.header {
+  position: fixed;
+  z-index: 10;
+  height: 3.3rem;
+  width: 100%;
+  @include linear-gradient(#222, #111);
+  #logo {
+      float: left;
+      margin-left: 5%;
+      h1 {
+          color: white;
+          font-family:  Helvetica, sans-serif;
+          font-weight: 100;
+          font-style: normal;
+          font-size: 1.5rem;
+          width: 10rem;
+          text-align: center;
+          margin: 5px 10px 0 10px;
+      }
+      #underline-left {
+          background-color: white;
+          height: 2px;
+          width: 2.3rem;
+          position: relative;
+          margin: 0 auto;
+          left: -3.3rem;
+          top: -2px;
+      }
+      #underline-right {
+          background-color: white;
+          height: 2px;
+          width: 5.9rem;
+          position: relative;
+          margin: 0 auto;
+          left: 1.6rem;
+          top: -4px;
+      }
+      #rainbow {
+          position: relative;
+          width: 120px;
+          height: 2px;
+          position: relative;
+          top: -2px;
+          left: 21px;
+          background: linear-gradient(90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF); 
+      }
+      #white-line {
+          position: relative;
+          width: 126px;
+          height: 2px;
+          position: relative;
+          top: 0px;
+          left: 18px;
+          background-color: white;
+      }
+  }
+
+}
+
 #wrapper {
-  height: 50rem;
   max-width: 80rem;
-  margin: 0 auto;
+  margin: 3.5rem auto 0rem;
 }
 
 button {

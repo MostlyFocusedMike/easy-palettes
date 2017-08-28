@@ -214,8 +214,8 @@
   $copyButton.on("click", function(e) {
       clipBoard(e);
   });
-  $nameForm.keypress(function(e) {
-      var key = e.which;
+  $nameForm.keypress(function(event) {
+      var key = event.which;
       if(key === 13) {
           addPalette();
           createSwatches(loadSwatch, removeSwatch);
