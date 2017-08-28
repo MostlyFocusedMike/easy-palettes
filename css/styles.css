@@ -206,6 +206,7 @@ div#palette-colors div.palette-container {
   border: 3px solid black;
   height: 336px;
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   overflow-y: hidden;
   white-space: nowrap;
   background-color: #121212;

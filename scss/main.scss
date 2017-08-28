@@ -211,6 +211,7 @@ div#palette-colors {
     border: $std-border;
     height: 336px;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
     white-space: nowrap; //keeps new swatches from adding below instead of to the right
     background-color: #121212;
