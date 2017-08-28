@@ -167,7 +167,6 @@ div#palette-colors {
     background-color: $palette-swatch;
     border: $std-border;
     width: 224px;
-    height: 134px;
     box-shadow: $basic-shad;
     input#palette-name {
         display: block;
@@ -186,7 +185,7 @@ div#palette-colors {
         }
     }
     a {
-        margin-top: 14px;
+        margin: 14px 0px 16px;
         display: block;
         text-align: center;
         
