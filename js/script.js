@@ -22,7 +22,7 @@
           ["F24949","FCFF3B","36FF61","40A9FF","C74FFF","Rainbow"]
         ];
 
-      if (loadedContent.length >= 1) {
+      if ((loadedContent.length >= 1) || (loadedContent === "undefined")) {
           palettes = loadedContent;
       } else {
           localStorage.palettes = JSON.stringify(palettes);
@@ -229,7 +229,7 @@
   $nameForm.keypress(function(event) {
       var key = event.which;
       if(key === 13) {
-          addPalette();
+          addPalette(); //todo add true check to see if need to reload palettes when fail
           createSwatches(loadSwatch, removeSwatch);
           colorFillSwatches();
       } 
