@@ -8,10 +8,22 @@
 
   function checkStorage() {
   //at the start of the program, it checks to see if there are any saved palettes
-      var palettes = [];
+      var loadedContent = JSON.parse(localStorage.palettes),
+        palettes = [
+          ["395ABD","84CEEB","5AB9EA","C1C8E4","8860D0","Clean and Energetic"],
+          ["59253A","78244C","895061","0677A1","2D4159","Unique Combination"],
+          ["026670","9FEDD7","FEF9C7","FCE181","EDEAE5","Lively Yet Soothing"],
+          ["61892F","86C232","222629","474B4F","6B6E70","Gorgeous Contrast"],
+          ["0B0C10","1F2833","C5C6C7","66FCF1","45A29E","Striking and Simple"],
+          ["1A1A1D","4E4E50","6F2232","950740","C30735","Contemporary and Bold"],
+          ["0C0032","190061","240090","3500D3","282828","Deep Purple and Blues"],
+          ["E27D60","E8A87C","C38D9E","85DCBB","41B3A3","Colorful and Balanced"],
+          ["501F3A","CB2D6F","CCCCCC","14A098","0F292F","Eye-Catching and Sleek"],
+          ["F24949","FCFF3B","36FF61","40A9FF","C74FFF","Rainbow"]
+        ];
 
-      if (localStorage.palettes) {
-          palettes = JSON.parse(localStorage.palettes);
+      if (loadedContent.length >= 1) {
+          palettes = loadedContent;
       } else {
           localStorage.palettes = JSON.stringify(palettes);
       }
@@ -100,8 +112,7 @@
         i, k, $background, $swatches, $swatch, paletteName, divId, $swatchColors, divClass, $newColor, $deleteButton, $loadButton, newWidth;
       $swatches = $("#swatches");
       $swatches.empty(); 
-      for (i = 0; i < palettesLength; i++) {
-          
+      for (i = 0; i < palettesLength; i++) { 
           $swatch = $("<div class='swatch'></div>");
           paletteName = palettes[i][5];
           divId = paletteName  + "-col-" + palettes[i][0];
@@ -114,16 +125,17 @@
               $newColor = $("<div class='colorBlock " + divClass + "' id='" + divId + "' ></div>");    
               $swatchColors.append($newColor);
           }
-          
           $swatch.append($swatchColors);
-          $swatch.append("<div class='mid'><h3 class='palette-name'>" + paletteName + "</h3></div>");
+          $swatch.append("<div class='mid'><h3 class='palette-name'></h3></div>");
           $deleteButton = $("<button class='remove-swatch'>Delete Palette</button>").click(removeSwatch);
           $swatch.append($deleteButton);
           $swatch.hide().appendTo($swatches);
+          $(".palette-name").eq(i).text(paletteName);
       }
       $(".swatch").each(function(i) {
-          $(this).delay(200 * i).fadeIn(500);
+          $(this).delay(100 * i).fadeIn(500);
       });
+      
   }
 
 
@@ -230,11 +242,7 @@
   $clearButton.on("click", function() {
       palettes.length = 0;
       localStorage.palettes = JSON.stringify(palettes);
-      $($(".swatch").get().reverse()).each(function(i) {
-          $(this).delay(100 * i).fadeOut(500);
-      });
-      ///$("#swatches").html("");
-      
+      $(".swatch").fadeOut(500);
   });
    
   

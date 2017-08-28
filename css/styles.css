@@ -50,7 +50,7 @@ div.header {
     div.header #logo #underline-right {
       background-color: white;
       height: 2px;
-      width: 5.9rem;
+      width: 6rem;
       position: relative;
       margin: 0 auto;
       left: 1.6rem;
@@ -88,13 +88,13 @@ button {
   text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
   background: color1;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#666, #555);
+  background: -webkit-linear-gradient(#777, #444);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#666, #555);
+  background: -o-linear-gradient(#777, #444);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#666, #555);
+  background: -moz-linear-gradient(#777, #444);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#666, #555);
+  background: linear-gradient(#777, #444);
   /* Standard syntax */ }
   button:active {
     background: color1;

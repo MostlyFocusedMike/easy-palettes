@@ -65,7 +65,7 @@ div.header {
       #underline-right {
           background-color: white;
           height: 2px;
-          width: 5.9rem;
+          width: 6rem;
           position: relative;
           margin: 0 auto;
           left: 1.6rem;
@@ -108,7 +108,7 @@ button {
     color: white;
     border: 3px solid #222;
     text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, .5);
-    @include linear-gradient(#666, #555); 
+    @include linear-gradient(#777, #444); 
     &:active {
         @include linear-gradient(#444, #777);
     }
