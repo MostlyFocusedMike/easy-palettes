@@ -2,7 +2,7 @@ $std-border: 3px solid black;
 $background-color: #1F1F1F;
 $palette-swatch: #434343;
 $rainbow: 90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF;
-$basic-shad: 0rem .5rem 1rem rgba(0, 0, 0, .5);
+$basic-shad: 0px 7px 14px rgba(0, 0, 0, .5);
 %flexy {
     display: flex;
     flex-wrap: wrap;
@@ -31,20 +31,19 @@ html, body {
 }
 
 #wrapper {
-    max-width: 80rem;
-    margin: 3.5rem auto 3rem;
+    max-width: 1120px;
+    margin: 49px auto 42px;
 }
 
 button {
-    width: 100px;
     display: block;
-    margin: .25rem auto;
+    margin: 3.5px auto;
     border-radius: 0%;
-    font-size: .9rem;
-    width: 8rem;
+    font-size: 14px;
+    width: 112px;
     color: white;
     border: 3px solid #222;
-    text-shadow: 0rem 0rem 1rem rgba(0, 0, 0, .5);
+    text-shadow: 0px 0px 14px rgba(0, 0, 0, .5);
     @include linear-gradient(#777, #444); 
     &:hover {
         color: #A3D3FF;
@@ -55,7 +54,7 @@ button {
 }
 
 input {
-    border-radius: none;
+    border-radius: 0%;
 }
 
 //MAIN CODE//////////////////////////////////////////////////////////////////////////////////////
@@ -63,7 +62,7 @@ input {
 div.header {
     position: fixed;
     z-index: 10;
-    height: 3.3rem;
+    height: 48px;
     width: 100%;
     @include linear-gradient(#222, #111);
     #logo {
@@ -73,10 +72,10 @@ div.header {
             color: white;
             font-weight: 100;
             font-style: normal;
-            font-size: 1.5rem;
-            width: 10rem;
+            font-size: 21px;
+            width: 140px;
             text-align: center;
-            margin: .4rem .8rem 0 .7rem;
+            margin: 5.6px 11.2px 0px 9.8px;
             &:hover {
                 color: #BAD7FF;
             }
@@ -87,28 +86,28 @@ div.header {
         #underline-left {
             background-color: white;
             height: 2px;
-            width: 2.3rem;
+            width: 32.2px;
             position: relative;
             margin: 0 auto;
-            left: -3.3rem;
+            left: -46.2px;
             top: -2px;
         }
         #underline-right {
             background-color: white;
             height: 2px;
-            width: 6rem;
+            width: 84px;
             position: relative;
             margin: 0 auto;
-            left: 1.55rem;
+            left: 21.7px;
             top: -4px;
         }
         #rainbow {
             position: relative;
-            width: 8.55rem;
+            width: 120px;
             height: 2px;
             position: relative;
             top: -2px;
-            left: 1.5rem;
+            left: 21px;
             background: #40A9FF; /* For browsers that do not support gradients */
             background: -webkit-linear-gradient($rainbow); /* For Safari 5.1 to 6.0 */
             background: -o-linear-gradient($rainbow); /* For Opera 11.1 to 12.0 */
@@ -117,10 +116,10 @@ div.header {
         }
         #white-line {
             position: relative;
-            width: 9rem;
+            width: 126px;
             height: 2px;
             position: relative;
-            left: 1.28rem;
+            left: 17.9px;
             background-color: white;
         }
     }
@@ -130,51 +129,52 @@ div#palette-colors {
     @extend %flexy;
     div.palette-container {
         @extend %flexy;
+        height: 110px;
         border: $std-border;
-        margin: .25rem 1rem;
-        padding: 0rem;
+        margin: 3px 14px;
+        padding: 0px;
         background-color: $palette-swatch;
         box-shadow: $basic-shad;
         .color-preview {
             position: relative;
-            width: 7rem;
-            height: 7rem;
+            width: 110px;
+            height: 110px;
             text-align: center;
         }
         .palette-buttons {
             float: right;
-            padding: 0rem 1rem 0rem 1rem;
+            padding: 6px 14px 0px 14px;
             border-left: $std-border;
             input {
-                padding: 0rem;
-                width: 5rem;
-                height: 1.4rem;
-                margin: .35rem 2rem .2rem;
-                font-size: 1.2rem;
+                padding: 0px;
+                width: 80px;
+                height: 19.6px;
+                margin: 3px 28px 6px;
+                font-size: 16px;
                 background-color: #efefef;
                 text-align: center;
             }
             .hash-version {
                 position: fixed;
-                top: -900rem;
+                top: -9999px;
             }
         } 
     }  
 }
 
 #palette-maker {
-    margin: 2rem auto;
+    margin: 28px auto;
     background-color: $palette-swatch;
     border: $std-border;
-    width: 16rem;
-    height: 9.5rem;
+    width: 224px;
+    height: 134px;
     box-shadow: $basic-shad;
     input#palette-name {
         display: block;
-        width: 13rem;
-        margin: 1.1rem auto;
+        width: 182px;
+        margin: 16px auto;
         text-align: center;
-        font-size: 1.3rem;
+        font-size: 18px;
     }
     button#save-palette {
         @include linear-gradient(#1FA9FF, #1880C2);
@@ -186,7 +186,7 @@ div#palette-colors {
         }
     }
     a {
-        margin-top: 1rem;
+        margin-top: 14px;
         display: block;
         text-align: center;
         
@@ -208,27 +208,27 @@ div#palette-colors {
 
 #swatches {
     width: 90%;
-    margin: 1rem auto;
+    margin: 14px auto;
     border: $std-border;
-    height: 24rem;
+    height: 336px;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap; //keeps new swatches from adding below instead of to the right
     background-color: #121212;
-    box-shadow: inset 0rem .5rem 1rem .1rem rgba(0, 0, 0, .5);
+    box-shadow: inset 0px 7px 14px 2px rgba(0, 0, 0, .5);
     position: relative;
     .swatch {
         display: inline-block;
-        width: 10rem;
-        height: 15rem;
+        width: 140px;
+        height: 210px;
         border: $std-border;
-        padding: 1rem;
-        margin: 2rem 1rem;
+        padding: 14px;
+        margin: 26px 14px;
         vertical-align: top;
         position: relative;
         color: white;
         background-color: $palette-swatch;
-        box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
+        box-shadow: 0px 4px 14px rgba(0, 0, 0, .5);
         .load-swatch {
             @include linear-gradient(#27B559, #1E8742);
             margin: 0 auto;
@@ -240,12 +240,12 @@ div#palette-colors {
             }
         }
         .swatch-colors {
-            border: .25rem solid #111;
-            width: 9rem;
-            height: 9rem;
-            margin: 1rem auto 0rem;
+            border: $std-border;
+            width: 126px;
+            height: 126px;
+            margin: 14px auto 0px;
             div.color0 {
-                height: 1.8rem;
+                height: 25.2px;
             }
             div.color1 {
                 @extend .color0
@@ -264,10 +264,10 @@ div#palette-colors {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 3.6rem;
+            height: 50px;
             h3 {
-                font-size: 1.1rem;
-                text-shadow: 0rem .1rem .1rem rgba(0, 0, 0, .5);
+                font-size: 15px;
+                text-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
                 text-align: center;
                 white-space: normal; //so the title will wrap, like its defualt is supposed to
                 word-wrap: break-word; //ensures long names with no spaces wrap regardless 
@@ -275,11 +275,11 @@ div#palette-colors {
         }
         .remove-swatch {
             position: absolute;
-            top: 18.2rem;
-            left: 2rem;
+            top: 254px;
+            left: 30px;
             @include linear-gradient(#870000, #610000);
             border: $std-border;
-            box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, .5);
+            box-shadow: 0px 3.5px 14px rgba(0, 0, 0, .5);
             &:hover {
                 color: #F2B5B5;
             }
@@ -291,19 +291,20 @@ div#palette-colors {
 }
 
 #clear {
-    width: 10rem;
-    height: 4rem;
+    width: 140px;
+    height: 58px;
     background-color: $palette-swatch;
-    margin: 1rem auto;
+    margin: 14px auto;
     vertical-align: middle;
     text-align: center;
     border: $std-border;
     box-shadow: $basic-shad;
     position: relative;
-    top: 2rem;
+    top: 28px;
     #clear-palettes {
         position: relative;
-        top: .9rem;
+        width: 125px;
+        top: 11px;
         @include linear-gradient(#222, #000000);
         border: $std-border;
         color: #BDBDBD;
@@ -318,8 +319,8 @@ div#palette-colors {
 
 #footer {
     background-color: $background-color;
-    width: 1rem;
-    height: 3rem;
+    width: 28px;
+    height: 42px;
     position: relative;
-    top: 2rem;
+    top: 28px;
 }
