@@ -25,7 +25,8 @@ div.header {
   background: -moz-linear-gradient(#222, #111);
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(#222, #111);
-  /* Standard syntax */ }
+  /* Standard syntax */
+  will-change: transform; }
   div.header #logo {
     float: left;
     margin-left: 5%; }
@@ -73,7 +74,7 @@ div.header {
 
 #wrapper {
   max-width: 80rem;
-  margin: 3.5rem auto 0rem; }
+  margin: 3.5rem auto 3rem; }
 
 button {
   width: 100px;

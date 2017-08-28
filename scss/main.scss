@@ -39,6 +39,7 @@ div.header {
   height: 3.3rem;
   width: 100%;
   @include linear-gradient(#222, #111);
+  will-change: transform;
   #logo {
       float: left;
       margin-left: 5%;
@@ -94,7 +95,7 @@ div.header {
 
 #wrapper {
   max-width: 80rem;
-  margin: 3.5rem auto 0rem;
+  margin: 3.5rem auto 3rem;
 }
 
 button {
