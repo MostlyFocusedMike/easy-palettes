@@ -57,6 +57,22 @@ input {
     border-radius: 0%;
 }
 
+#background {
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    left: 5px;
+    top: 48px;
+    img {
+        height: 40px;
+        position: fixed;
+        left: 5px;
+        top: 48px;
+        visibility: hidden;
+    }
+}
+
+
 //MAIN CODE//////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 div.header {

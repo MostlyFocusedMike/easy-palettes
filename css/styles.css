@@ -52,6 +52,19 @@ button {
 input {
   border-radius: 0%; }
 
+#background {
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  left: 5px;
+  top: 48px; }
+  #background img {
+    height: 40px;
+    position: fixed;
+    left: 5px;
+    top: 48px;
+    visibility: hidden; }
+
 div.header {
   position: fixed;
   z-index: 10;

@@ -184,17 +184,17 @@
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   //MAIN PROGRAM BELOW////////////////////////////////////////////////////////////
- 
   var $copyButton = $(".copy-button"),
     $saveButton = $("#save-palette"),
     $clearButton = $("#clear-palettes"),
     $nameForm = $("#palette-name"),
     $inputs = $("input"),
     palettes = checkStorage(),
+    $background = $("#background"),
     key;
     
   $(createSwatches(loadSwatch, removeSwatch));
-
+  
   $copyButton.on("click", function(e) {
       clipBoard(e);
   });
@@ -221,5 +221,9 @@
   $clearButton.on("click", function() {
       clearSwatches(palettes);
   });
+  
+  $background.on("click", function (event) {
+      $("#bkg").css("visibility", "visible");
+	});
   
 }());
