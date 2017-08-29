@@ -9,13 +9,45 @@
   function checkStorage() {
   //at the start of the program, it checks to see if there are any saved palettes
       var palettes = [
-          ["395ABD","84CEEB","5AB9EA","C1C8E4","8860D0","Clean and Energetic"],
-          ["59253A","78244C","895061","0677A1","2D4159","Unique Combination"],
-          ["026670","9FEDD7","FEF9C7","FCE181","EDEAE5","Lively Yet Soothing"],
+          ["000000","2F2E33","D5D6D2","FFFFFF","3A5199","Sleek and Modern"],
+          ["600A0A","A10115","D72C16","F0EFEA","C0B2B5","Wintery Reds"],
+          ["FFFBB4","FFCCBB","6EB5C0","006C84","E2E8E4","Arctic Sunrise"],
+          ["E1F5C4","EDE574","F9D423","FC913A","FF4E50","Arizona Morning"],
+          ["D0E2FF","8F93AE","5A4E4D","7E675E","DDA288","Cosmopolitan"],
+          ["010609","04202C","304040","5B7065","C9D1C8","Misty Greens"],
+          ["1B2D32","2C4A52","537072","8E9B97","F4EBDB","Hazy Grays"],
           ["61892F","86C232","222629","474B4F","6B6E70","Gorgeous Contrast"],
           ["0B0C10","1F2833","C5C6C7","66FCF1","45A29E","Striking and Simple"],
           ["1A1A1D","4E4E50","6F2232","950740","C30735","Contemporary and Bold"],
           ["0C0032","190061","240090","3500D3","282828","Deep Purple and Blues"],
+          ["1B1010","50312F","CB0000","E4EA8C","3F6C45","Bold Berries"],
+          ["B38867","DDBC95","FFF8F1","CDCDC0","626D71","Neutral and Versatile"],
+          ["FEFEFE","EBEBEC","BCBABE","A1D6E2","1995AD","Icy Blues and Grays"],
+          ["0D1C20","1E434C","8D230F","9B4F0F","C99E10","Autumn in Vermont"],
+          ["D0EEFF","90AFC5","336B87","2A3132","763626","Subdued and Professional"], 
+          ["000000","000B29","D70026","EDB83D","F8F5F2","Bold and Basic"],
+          ["FAE500","FAAF08","FA812F","FA4032","FEF3E2","Sunny Citrus"],
+          ["0E0F1D","16253D","002F5B","EFB509","CD7213","Classy and Timeless"],
+          ["000000","20232A","ACBEBE","F4F4EF","A01D26","Industrial in Control"],
+          ["444C5C","CE5A57","78A5A3","E1B161","FFF2D7","Warm and Cool"],
+          ["335252","D4DDE1","BB3F3F","50231E","2D3033","Understated and Versatile"],
+          ["4B4345","556DAC","6CAEFF","F79B77","755248","Salmon Lunch"],
+          ["100F11","363237","2D4262","73605B","D09683","Sunset to Dusk"],
+          ["5D535E","9A9EAB","EC96A4","DFE166","FFFEE2","Birds and Berries"],
+          ["370B00","7F0629","A71208","8A3507","CDB999","Homey"],
+          ["FFCC32","DA8950","FFFFFF","35AEF9","565B60","Homer"],
+          ["001118","00293C","1E656D","F1F3CE","F62A00","Timeless and Nautical"],
+          ["F0810F","E6DF44","FEFFE2","063852","011A27","Day and Night"],
+          ["1B0B0B","F4CC70","DE7A22","20948B","6AB187","Surf and Turf"],
+          ["E4FFF8","98DBC6","5BC8AC","E6D72A","F18D9E","Refreshing and Pretty"],
+          ["001B20","003B46","07575B","66A5AD","C4DFE6","Cool Blues"],
+          ["1C1C25","505160","68829E","AEBD38","598234","Crisp and Dramatic"],
+          ["F98866","FF420E","F1FCFF","80BD9E","89DA59","Fresh and Bright"],
+          ["F8B195","F67280","C06C84","6C5B7B","355C7D","Fading Sunset"],
+          ["E5FCC2","9DE0AD","45ADA8","547980","594F4F","By The Pond"], 
+          ["395ABD","84CEEB","5AB9EA","C1C8E4","8860D0","Clean and Energetic"],
+          ["59253A","78244C","895061","0677A1","2D4159","Unique Combination"],
+          ["026670","9FEDD7","FEF9C7","FCE181","EDEAE5","Lively Yet Soothing"],
           ["E27D60","E8A87C","C38D9E","85DCBB","41B3A3","Colorful and Balanced"],
           ["501F3A","CB2D6F","CCCCCC","14A098","0F292F","Eye-Catching and Sleek"],
           ["F24949","FCFF3B","36FF61","40A9FF","C74FFF","Rainbow"]
@@ -129,7 +161,7 @@
       }
       //fade in animation
       $(".swatch").each(function(i) {
-          $(this).delay(100 * i).fadeIn(500);
+          $(this).delay(50 * i).fadeIn(250);
       });
     
       //colors in each of the color blocks now that they are created
@@ -167,17 +199,27 @@
     palettes.splice($index, 1);
     localStorage.palettes = JSON.stringify(palettes);
     $swatch.animate(
-        {top: '+=50', opacity: 0.0}, 300,
+        {top: '+=50', opacity: 0.0}, 
+        300,
         function() {
             $swatch.remove();
-    });
+        }
+    );
   }
 
   
   function clearSwatches(palettes) {
       palettes.length = 0;
       localStorage.palettes = JSON.stringify(palettes);
-      $(".swatch").fadeOut(700);
+      $(".swatch").each(function() {
+          $(this).animate(
+              {top: '+=50', opacity: 0.0}, 
+              300,
+              function() {
+                  $swatch.remove();
+              }
+          )
+      });
   }
   
   ////////////////////////////////////////////////////////////////////////////////

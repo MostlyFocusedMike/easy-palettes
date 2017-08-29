@@ -199,18 +199,18 @@ div#palette-colors div.palette-container {
       /* For Firefox 3.6 to 15 */
       background: linear-gradient(#1880C2, #1FA9FF);
       /* Standard syntax */ }
-  #palette-maker a {
-    margin: 14px 0px 16px;
+  #palette-maker p {
     display: block;
+    margin: 14px 0px 16px;
     text-align: center;
     color: white; }
-    #palette-maker a:link {
+    #palette-maker p a:link {
       color: white; }
-    #palette-maker a:visited {
+    #palette-maker p a:visited {
       color: #FFFFFF; }
-    #palette-maker a:hover {
+    #palette-maker p a:hover {
       color: #BAD7FF; }
-    #palette-maker a:active {
+    #palette-maker p a:active {
       color: #40A9FF; }
 
 #swatches {
