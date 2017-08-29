@@ -81,7 +81,7 @@
       }
       //if there's a match, it's updated instead of creating a new entry
       for (i = 0; i < palettesLength; i++) {
-          if ($name === palettes[i][5]) {
+          if ($name.val() === palettes[i][5]) {
               palettes[i] = palette;
               localStorage.palettes = JSON.stringify(palettes);
               return true; 
@@ -107,8 +107,8 @@
       $swatches.empty(); 
       for (i = 0; i < palettesLength; i++) { 
           $swatch = $("<div class='swatch'></div>");
-          paletteName = palettes[i][5];
-          divId = paletteName  + "-col-" + palettes[i][0];
+          paletteName = palettes[i][5]; //"here's"
+          divId = "swatch" + i;
           $loadButton =  $("<button class='load-swatch'>Load Palette</button>").click(loadSwatch);
           $swatch.append($loadButton);
         
@@ -116,7 +116,7 @@
           $swatchColors = $("<div class='swatch-colors' id='" + divId + "'></div>");
           for (k = 0; k < 5; k++) {
               colorClass = "color" + k;
-              divId = palettes[i][5]+ "-col-" + palettes[i][k]; //[5] is the name and [k] is the hex color
+              divId = i + "-col-" + k + "-" + palettes[i][k]; //[5] is the name and [k] is the hex color  palettes[i][5]
               $newColor = $("<div class='color-block " + colorClass + "' id='" + divId + "' ></div>");    
               $swatchColors.append($newColor);
           }
