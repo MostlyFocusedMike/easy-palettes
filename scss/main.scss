@@ -3,6 +3,12 @@ $background-color: #1F1F1F;
 $palette-swatch: #434343;
 $rainbow: 90deg, #F24949, #FCFF3B, #36FF61, #40A9FF, #C74FFF;
 $basic-shad: 0px 7px 14px rgba(0, 0, 0, .5);
+
+%unseen {
+    position: fixed;
+    top: -9999px;
+}
+
 %flexy {
     display: flex;
     flex-wrap: wrap;
@@ -38,11 +44,11 @@ html, body {
     background-color: $background-color;
     overflow-x: hidden;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     font-family: helvetica, sans-serif;
 }
 
 #wrapper {
-    max-width: 1120px;
     margin: 49px auto 42px;
 }
 
@@ -74,12 +80,12 @@ input {
     position: fixed;
     left: 5px;
     top: 48px;
-    img {
+    #bkg {
         height: 40px;
         position: fixed;
         left: 5px;
         top: 48px;
-        visibility: hidden;
+        display: none;
     }
 }
 
@@ -169,7 +175,6 @@ div.header {
 
 div#pop-up {
     width: 100%;
-    height: 400px;
     position: fixed;
     top: 60px;
     margin: 0 auto;
@@ -178,14 +183,23 @@ div#pop-up {
     div#pop-up-background {
         width: 40%;
         min-width: 330px;
-        height: 100%;
+        height: 425px;
         margin: 0 auto;
         text-align: center;
         color: white;
-        @include linear-gradient(#222, #111);
+        @include linear-gradient(#333333, #111111);
         border: 3px solid white;
         position: relative;
-        div#help {
+        button#close {
+            position: absolute;
+            right: 0px;
+            top: -8px;
+            width: auto;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+        }
+        div#help-pop-up {
             width: 85%;
             height: 100%;
             margin: 0 auto;
@@ -201,14 +215,30 @@ div#pop-up {
                 text-align: left;
             }
         }
-        button#close {
-            position: absolute;
-            right: 2px;
-            top: -6px;
-            width: auto;
-            background: transparent;
-            border: none;
-            font-size: 20px;
+        div#export-pop-up {
+            width: 85%;
+            height: 100%;
+            margin: 0 auto;
+            overflow-y: hidden;
+          button {
+              margin-bottom: 15px;
+          }
+            div#export-pop-up-colors {
+                padding: 0;
+                height: 230px;
+                overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+              h3 {
+                  margin: 0 0 1px;
+              }
+              p {
+                  margin: 0 0 14px 0;
+                  font-size: 14px;
+              }
+            }
+            input {
+                @extend %unseen;
+            }
         }
     }  
 }
@@ -217,6 +247,8 @@ div#pop-up {
 
 div#palette-colors {
     @extend %flexy;
+    max-width: 1120px;
+    margin: 0 auto;
     div.palette-container {
         @extend %flexy;
         height: 110px;
@@ -245,8 +277,7 @@ div#palette-colors {
                 text-align: center;
             }
             .hash-version {
-                position: fixed;
-                top: -9999px;
+                @extend %unseen;
             }
         } 
     }  
@@ -286,13 +317,13 @@ div#palette-colors {
 }
 
 #swatches {
-    width: 82%;
+    width: 90%;
     margin: 14px auto;
     border: $std-border;
     height: 336px;
     overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     white-space: nowrap; //keeps new swatches from adding below instead of to the right
     background-color: #121212;
     box-shadow: inset 0px 7px 14px 2px rgba(0, 0, 0, .5);

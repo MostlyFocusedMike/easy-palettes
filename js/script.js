@@ -65,7 +65,7 @@
   
   
   function clipBoard(e) {
-  //function that copies the value of the hexcode with or without a # infront
+  //function that copies the value of the hexcode with or without a # infront, or export
     var buttonValue =  e.target.id, //each copy button's id corresponds to the id of the # or non-# version of the input 
       $copyTextarea = $('#color-' + buttonValue), //this creates the id of the hash or non-hash version
       $hexValue = $('#color-' + buttonValue.slice(0, 7)).val(), //finds val of color hexcode input
@@ -228,6 +228,24 @@
       });
   }
   
+  function exportSwatches() {
+    var palettes = JSON.parse(localStorage.palettes),
+      palettesLength = palettes.length,
+      $exportPopUp = $("#export-pop-up-colors"),
+      $copyField = $("#color-copy-all"),
+      i, paletteName, colors;
+    
+    $exportPopUp.html("")
+    for (i=0; i < palettesLength; i++) {
+        paletteName = palettes[i][5]
+        $exportPopUp.append("<h3>" + paletteName + ": </h3>");
+        colors = " " + palettes[i][0] + ", " + palettes[i][1] + ", " + palettes[i][2] + ", " + palettes[i][3] + ", " + palettes[i][4] + " ";
+        $exportPopUp.append("<p>" + colors + "</p>");
+    }
+    $copyField.val($exportPopUp.text());
+    
+  }
+  
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -243,26 +261,49 @@
     $help = $("#help"),
     $export = $("#export"),
     $popUp = $("#pop-up"),
-    $helpPopUp = $(""),
+    $helpPopUp = $("#help-pop-up"),
+    $exportPopUp = $("#export-pop-up"),
     $close = $("#close"),
+    $nav = $("nav"),
     key;
     
   $(createSwatches(loadSwatch, removeSwatch));
   
-  $help.on("click", function() {
-      $popUp.css("display", "block");
-  })
+  $("body").click(function(event) {
+      switch(event.target.id) {
+          case "help":
+              $popUp.css("display", "block");
+              $exportPopUp.css("display", "none");
+              $helpPopUp.css("display", "block");
+              break;
+          case "export":
+              $popUp.css("display", "block");
+              $helpPopUp.css("display", "none");
+              $exportPopUp.css("display", "block");
+              exportSwatches();
+              break;
+          case "close":
+              $popUp.css("display", "none");
+              break;
+          case "save-palette":
+              if (addPalette()) {
+                  createSwatches(loadSwatch, removeSwatch);
+              }  
+              break;
+          case "clear-palettes":
+              clearSwatches(palettes);
+              break;
+          case "background":
+              $("#bkg").css("display", "block");
+              break;
+          };
+  });
   
-  $close.on("click", function() {
-      $popUp.css("display", "none");
-      
-  })
-  
-  $copyButton.on("click", function(e) {
+  $copyButton.click(function(e) {
       clipBoard(e);
   });
   
-  $inputs.on("click", function(event) {
+  $inputs.click(function(event) {
       clearPaletteInput(event);
   });
   
@@ -274,19 +315,5 @@
           }
       } 
    });
-  
-  $saveButton.on("click", function() {
-      if (addPalette()) {
-          createSwatches(loadSwatch, removeSwatch);
-      }  
-  });
-  
-  $clearButton.on("click", function() {
-      clearSwatches(palettes);
-  });
-  
-  $background.on("click", function (event) {
-      $("#bkg").css("visibility", "visible");
-	});
   
 }());

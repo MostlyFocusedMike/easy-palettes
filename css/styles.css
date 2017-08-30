@@ -1,3 +1,7 @@
+div#pop-up div#pop-up-background div#export-pop-up input, div#palette-colors div.palette-container .palette-buttons .hash-version {
+  position: fixed;
+  top: -9999px; }
+
 div#palette-colors, div#palette-colors div.palette-container {
   display: flex;
   flex-wrap: wrap;
@@ -17,10 +21,10 @@ html, body {
   background-color: #1F1F1F;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   font-family: helvetica, sans-serif; }
 
 #wrapper {
-  max-width: 1120px;
   margin: 49px auto 42px; }
 
 button {
@@ -65,12 +69,12 @@ input {
   position: fixed;
   left: 5px;
   top: 48px; }
-  #background img {
+  #background #bkg {
     height: 40px;
     position: fixed;
     left: 5px;
     top: 48px;
-    visibility: hidden; }
+    display: none; }
 
 div.header {
   position: fixed;
@@ -154,7 +158,6 @@ div.header {
 
 div#pop-up {
   width: 100%;
-  height: 400px;
   position: fixed;
   top: 60px;
   margin: 0 auto;
@@ -163,71 +166,88 @@ div#pop-up {
   div#pop-up div#pop-up-background {
     width: 40%;
     min-width: 330px;
-    height: 100%;
+    height: 425px;
     margin: 0 auto;
     text-align: center;
     color: white;
-    background: #222;
+    background: #333333;
     /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#222, #111);
+    background: -webkit-linear-gradient(#333333, #111111);
     /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#222, #111);
+    background: -o-linear-gradient(#333333, #111111);
     /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#222, #111);
+    background: -moz-linear-gradient(#333333, #111111);
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#222, #111);
+    background: linear-gradient(#333333, #111111);
     /* Standard syntax */
     border: 3px solid white;
     position: relative; }
-    div#pop-up div#pop-up-background div#help {
+    div#pop-up div#pop-up-background button#close {
+      position: absolute;
+      right: 0px;
+      top: -8px;
+      width: auto;
+      background: transparent;
+      border: none;
+      font-size: 20px; }
+    div#pop-up div#pop-up-background div#help-pop-up {
       width: 85%;
       height: 100%;
       margin: 0 auto;
       overflow-x: hidden; }
-      div#pop-up div#pop-up-background div#help p {
+      div#pop-up div#pop-up-background div#help-pop-up p {
         color: white;
         width: 100%;
         margin: 10px auto;
         line-height: 18px;
         margin: -10px 0px 30px 0px; }
-      div#pop-up div#pop-up-background div#help p.info {
+      div#pop-up div#pop-up-background div#help-pop-up p.info {
         text-align: left; }
-    div#pop-up div#pop-up-background button#close {
-      position: absolute;
-      right: 2px;
-      top: -6px;
-      width: auto;
-      background: transparent;
-      border: none;
-      font-size: 20px; }
+    div#pop-up div#pop-up-background div#export-pop-up {
+      width: 85%;
+      height: 100%;
+      margin: 0 auto;
+      overflow-y: hidden; }
+      div#pop-up div#pop-up-background div#export-pop-up button {
+        margin-bottom: 15px; }
+      div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors {
+        padding: 0;
+        height: 230px;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch; }
+        div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors h3 {
+          margin: 0 0 1px; }
+        div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors p {
+          margin: 0 0 14px 0;
+          font-size: 14px; }
 
-div#palette-colors div.palette-container {
-  height: 110px;
-  border: 3px solid black;
-  margin: 3px 14px;
-  padding: 0px;
-  background-color: #434343;
-  box-shadow: 0px 7px 14px rgba(0, 0, 0, 0.5); }
-  div#palette-colors div.palette-container .color-preview {
-    position: relative;
-    width: 110px;
+div#palette-colors {
+  max-width: 1120px;
+  margin: 0 auto; }
+  div#palette-colors div.palette-container {
     height: 110px;
-    text-align: center; }
-  div#palette-colors div.palette-container .palette-buttons {
-    float: right;
-    padding: 6px 14px 0px 14px;
-    border-left: 3px solid black; }
-    div#palette-colors div.palette-container .palette-buttons input {
-      padding: 0px;
-      width: 80px;
-      height: 19.6px;
-      margin: 3px 28px 6px;
-      font-size: 16px;
-      background-color: #efefef;
+    border: 3px solid black;
+    margin: 3px 14px;
+    padding: 0px;
+    background-color: #434343;
+    box-shadow: 0px 7px 14px rgba(0, 0, 0, 0.5); }
+    div#palette-colors div.palette-container .color-preview {
+      position: relative;
+      width: 110px;
+      height: 110px;
       text-align: center; }
-    div#palette-colors div.palette-container .palette-buttons .hash-version {
-      position: fixed;
-      top: -9999px; }
+    div#palette-colors div.palette-container .palette-buttons {
+      float: right;
+      padding: 6px 14px 0px 14px;
+      border-left: 3px solid black; }
+      div#palette-colors div.palette-container .palette-buttons input {
+        padding: 0px;
+        width: 80px;
+        height: 19.6px;
+        margin: 3px 28px 6px;
+        font-size: 16px;
+        background-color: #efefef;
+        text-align: center; }
 
 #palette-maker {
   margin: 28px auto;
@@ -272,13 +292,13 @@ div#palette-colors div.palette-container {
     color: white; }
 
 #swatches {
-  width: 82%;
+  width: 90%;
   margin: 14px auto;
   border: 3px solid black;
   height: 336px;
   overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   white-space: nowrap;
   background-color: #121212;
   box-shadow: inset 0px 7px 14px 2px rgba(0, 0, 0, 0.5);
