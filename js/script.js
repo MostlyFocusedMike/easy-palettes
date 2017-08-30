@@ -220,10 +220,7 @@
       $(".swatch").each(function() {
           $(this).animate(
               {top: '+=50', opacity: 0.0}, 
-              300,
-              function() {
-                  $swatch.remove();
-              }
+              300
           )
       });
   }
