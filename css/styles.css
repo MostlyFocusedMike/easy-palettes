@@ -168,6 +168,7 @@ div#pop-up {
     min-width: 330px;
     height: 425px;
     margin: 0 auto;
+    padding: 0;
     text-align: center;
     color: white;
     background: #333333;
