@@ -74,7 +74,7 @@ input {
     position: fixed;
     left: 5px;
     top: 48px;
-    display: none; }
+    visibility: hidden; }
 
 div.header {
   position: fixed;
@@ -180,7 +180,7 @@ div#pop-up {
     /* For Firefox 3.6 to 15 */
     background: linear-gradient(#333333, #111111);
     /* Standard syntax */
-    border: 3px solid white;
+    border: 4px solid white;
     position: relative; }
     div#pop-up div#pop-up-background button#close {
       position: absolute;
@@ -212,7 +212,7 @@ div#pop-up {
         margin-bottom: 15px; }
       div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors {
         padding: 0;
-        height: 230px;
+        height: 280px;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch; }
         div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors h3 {
@@ -220,6 +220,8 @@ div#pop-up {
         div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors p {
           margin: 0 0 14px 0;
           font-size: 14px; }
+        div#pop-up div#pop-up-background div#export-pop-up div#export-pop-up-colors p:last-of-type {
+          margin-bottom: 80px; }
 
 div#palette-colors {
   max-width: 1120px;

@@ -85,7 +85,7 @@ input {
         position: fixed;
         left: 5px;
         top: 48px;
-        display: none;
+        visibility: hidden;
     }
 }
 
@@ -188,7 +188,7 @@ div#pop-up {
         text-align: center;
         color: white;
         @include linear-gradient(#333333, #111111);
-        border: 3px solid white;
+        border: 4px solid white;
         position: relative;
         button#close {
             position: absolute;
@@ -225,7 +225,7 @@ div#pop-up {
           }
             div#export-pop-up-colors {
                 padding: 0;
-                height: 230px;
+                height: 280px;
                 overflow-y: scroll;
                 -webkit-overflow-scrolling: touch;
               h3 {
@@ -234,6 +234,9 @@ div#pop-up {
               p {
                   margin: 0 0 14px 0;
                   font-size: 14px;
+              }
+              p:last-of-type {
+                  margin-bottom: 80px;
               }
             }
             input {

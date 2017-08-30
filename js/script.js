@@ -235,22 +235,44 @@
   }
   
   function exportSwatches() {
-    var palettes = JSON.parse(localStorage.palettes),
-      palettesLength = palettes.length,
-      $exportPopUp = $("#export-pop-up-colors"),
-      $copyField = $("#color-copy-all"),
-      i, paletteName, colors;
-    
-    $exportPopUp.html("")
-    for (i=0; i < palettesLength; i++) {
-        paletteName = palettes[i][5]
-        $exportPopUp.append("<h3>" + paletteName + ": </h3>");
-        colors = " " + palettes[i][0] + ", " + palettes[i][1] + ", " + palettes[i][2] + ", " + palettes[i][3] + ", " + palettes[i][4] + " ";
-        $exportPopUp.append("<p>" + colors + "</p>");
-    }
-    $copyField.val($exportPopUp.text());
-    
+      var palettes = JSON.parse(localStorage.palettes),
+        palettesLength = palettes.length,
+        $exportPopUp = $("#export-pop-up-colors"),
+        $copyField = $("#color-copy-all"),
+        i, paletteName, colors;
+
+      $exportPopUp.html("")
+      for (i=0; i < palettesLength; i++) {
+          paletteName = palettes[i][5]
+          $exportPopUp.append("<h3>" + paletteName + ": </h3>");
+          colors = " " + palettes[i][0] + ", " + palettes[i][1] + ", " + palettes[i][2] + ", " + palettes[i][3] + ", " + palettes[i][4] + " ";
+          $exportPopUp.append("<p>" + colors + "</p>");
+      }
+      $copyField.val($exportPopUp.text());
   }
+    
+  function menuItems(event) {
+      var button = event.target.id,
+        $help = $("#help"),
+        $export = $("#export"),
+        $popUp = $("#pop-up"),
+        $helpPopUp = $("#help-pop-up"),
+        $exportPopUp = $("#export-pop-up"),
+        $close = $("#close");
+
+      if (button === "help") {
+        $popUp.css("display", "block");
+        $exportPopUp.css("display", "none");
+        $helpPopUp.css("display", "block");
+      } else {
+        $popUp.css("display", "block");
+        $helpPopUp.css("display", "none");
+        $exportPopUp.css("display", "block");
+        exportSwatches();  
+      }
+
+  }
+
   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -264,28 +286,15 @@
     $inputs = $("input"),
     palettes = checkStorage(),
     $background = $("#background"),
-    $help = $("#help"),
-    $export = $("#export"),
-    $popUp = $("#pop-up"),
-    $helpPopUp = $("#help-pop-up"),
-    $exportPopUp = $("#export-pop-up"),
-    $close = $("#close"),
     $nav = $("nav"),
+    $popUp = $("#pop-up"),
+    $close = $("#close"),
     key;
     
   $(createSwatches(loadSwatch, removeSwatch));
   
-   $help.on("click", function() {
-       $popUp.css("display", "block");
-       $exportPopUp.css("display", "none");
-       $helpPopUp.css("display", "block");
-  });
-  
-  $export.on("click", function() {
-      $popUp.css("display", "block");
-      $helpPopUp.css("display", "none");
-      $exportPopUp.css("display", "block");
-      exportSwatches();          
+  $nav.on("click", function(event) {
+       menuItems(event);
   });
   
   $close.on("click", function() {
@@ -321,8 +330,6 @@
   
   $background.on("click", function (event) {
       $("#bkg").css("visibility", "visible");
-        });
+  });
 
-
-  
 }());
