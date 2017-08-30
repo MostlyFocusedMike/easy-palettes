@@ -269,41 +269,29 @@
     
   $(createSwatches(loadSwatch, removeSwatch));
   
-  $("body").click(function(event) {
-      switch(event.target.id) {
-          case "help":
-              $popUp.css("display", "block");
-              $exportPopUp.css("display", "none");
-              $helpPopUp.css("display", "block");
-              break;
-          case "export":
-              $popUp.css("display", "block");
-              $helpPopUp.css("display", "none");
-              $exportPopUp.css("display", "block");
-              exportSwatches();
-              break;
-          case "close":
-              $popUp.css("display", "none");
-              break;
-          case "save-palette":
-              if (addPalette()) {
-                  createSwatches(loadSwatch, removeSwatch);
-              }  
-              break;
-          case "clear-palettes":
-              clearSwatches(palettes);
-              break;
-          case "background":
-              $("#bkg").css("display", "block");
-              break;
-          };
+   $help.on("click", function() {
+       $popUp.css("display", "block");
+       $exportPopUp.css("display", "none");
+       $helpPopUp.css("display", "block");
   });
   
-  $copyButton.click(function(e) {
+  $export.on("click", function() {
+      $popUp.css("display", "block");
+      $helpPopUp.css("display", "none");
+      $exportPopUp.css("display", "block");
+      exportSwatches();          
+  });
+  
+  $close.on("click", function() {
+      $popUp.css("display", "none");
+      
+  })
+  
+  $copyButton.on("click", function(e) {
       clipBoard(e);
   });
   
-  $inputs.click(function(event) {
+  $inputs.on("click", function(event) {
       clearPaletteInput(event);
   });
   
@@ -315,5 +303,21 @@
           }
       } 
    });
+  
+  $saveButton.on("click", function() {
+      if (addPalette()) {
+          createSwatches(loadSwatch, removeSwatch);
+      }  
+  });
+  
+  $clearButton.on("click", function() {
+      clearSwatches(palettes);
+  });
+  
+  $background.on("click", function (event) {
+      $("#bkg").css("visibility", "visible");
+        });
+
+
   
 }());
