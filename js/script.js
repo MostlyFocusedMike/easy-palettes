@@ -53,13 +53,22 @@
           ["F24949","FCFF3B","36FF61","40A9FF","C74FFF","Rainbow"]
         ];
 
-      //if the variable exists, and it's not empty, load the saved palettes
-      if ((localStorage.palettes) && (localStorage.palettes.length > 2)) {
-          palettes = JSON.parse(localStorage.palettes);
-      } else { 
-          //otherwise, load the default palettes
-          localStorage.palettes = JSON.stringify(palettes);
+      try {
+          //if the variable exists, and it's not empty, load the saved palettes
+          if ((localStorage.palettes) && (localStorage.palettes.length > 2)) {
+              palettes = JSON.parse(localStorage.palettes);
+          } else { 
+              //otherwise, load the default palettes
+              localStorage.palettes = JSON.stringify(palettes);
+          }
       }
+      catch(err) {
+          //if for some reason they are using incognito mode the program won't work, it needs
+          //localStorage access to function
+          window.alert("Hey, it looks like you're using private mode, or some other browser that restricts access to local storage. You wont be able to save your work if you stay in this mode, please switch to a public browser to get the full use out of this page.")
+      }
+    
+      
       return palettes;
   }
   
@@ -280,8 +289,7 @@
   });
   
   $close.on("click", function() {
-      $popUp.css("display", "none");
-      
+      $popUp.css("display", "none");  
   })
   
   $copyButton.on("click", function(e) {
