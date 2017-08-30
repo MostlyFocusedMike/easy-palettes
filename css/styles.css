@@ -2,7 +2,7 @@ div#pop-up div#pop-up-background div#export-pop-up input, div#palette-colors div
   position: fixed;
   top: -9999px; }
 
-div#palette-colors, div#palette-colors div.palette-container {
+div#palette-colors, div#palette-colors div.palette-container, #swatches {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -292,14 +292,12 @@ div#palette-colors {
     color: white; }
 
 #swatches {
-  width: 90%;
+  width: 70%;
   margin: 14px auto;
   border: 3px solid black;
   height: 336px;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
   background-color: #121212;
   box-shadow: inset 0px 7px 14px 2px rgba(0, 0, 0, 0.5);
   position: relative; }

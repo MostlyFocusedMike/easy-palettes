@@ -317,14 +317,13 @@ div#palette-colors {
 }
 
 #swatches {
-    width: 90%;
+    @extend %flexy;
+    width: 70%;
     margin: 14px auto;
     border: $std-border;
     height: 336px;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    white-space: nowrap; //keeps new swatches from adding below instead of to the right
     background-color: #121212;
     box-shadow: inset 0px 7px 14px 2px rgba(0, 0, 0, .5);
     position: relative;
