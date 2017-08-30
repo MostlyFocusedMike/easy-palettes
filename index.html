@@ -17,19 +17,55 @@
  -changing the buttons value will change the starting color of the colorBlock
 -->
 
-<a href="#top">
+
   <div class="header">
-    
-    <div id="logo">
-      <h1>Easy Palettes</h1>
-      <div id="underline-left"></div>
-      <div id="underline-right"></div>
-      <div id="rainbow"></div>
-      <div id="white-line"></div>
-    </div>
+    <a href="#top">
+      <div id="logo">
+        <h1>Easy Palettes</h1>
+        <div id="underline-left"></div>
+        <div id="underline-right"></div>
+        <div id="rainbow"></div>
+        <div id="white-line"></div>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li id="help">Help</li>
+        <li id="export">Export</li>
+      </ul>
+    </nav>
   </div>
-</a>
+
 <div id="top"></div>
+  
+  
+  <div id="pop-up">
+      
+    <div id="pop-up-background">
+        <button id="close">x</button>
+        <div id="help">
+            <h2>Welcome to Easy Palettes!</h2>
+            <p>The easiest way for designers to experiment with colors while they're working on a project</p>
+          
+            <h3>Getting Started</h3>
+            <p class="info">To change a color, click on its hex code. A color selector will pop up where you can click and drag around to see different colors.
+            The slider on the side adjusts the brightness. Once you have selected your color, just click outside the color selector to hid the pop up.</p>
+          
+            <h3>Copying to Clipboard</h3>
+            <p class="info">"Copy #HEX" copies the code and a hash mark (#FFFFFF) to your computer's clipboard. "Copy HEX" will just copy the code (FFFFFF) to your clipboard.</p>
+
+            <h3>Saving/loading a Palette</h3>
+            <p class="info">To load a palette into the main boxes, just hit the "Load Palette" button on the preview swatch. To save, simply enter a name for your palette and hit enter or use the "Save Palette" button. Saving a palette with a name that already exists just updates that palette.</p>
+
+            <h3>Deleting palettes </h3>
+
+            <p class="info">To delete a single palette, hit the "Delete Palette" button underneath it in the preview box. To remove all palettes, use the "Clear Palettes" button. But be careful! While the default palettes will always reload if you start the program with 0 palettes saved, your personal creations or edits can't come back once they've been deleted.</p> 
+        </div>
+    </div>
+    
+    
+  </div>
+
   
 <div id="wrapper">
     <div id="background"><img src="images/background.jpg" alt="background" id="bkg"/></div>

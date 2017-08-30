@@ -8,6 +8,17 @@ $basic-shad: 0px 7px 14px rgba(0, 0, 0, .5);
     flex-wrap: wrap;
     justify-content: center;
 }
+%link {
+    &:visited {
+        color: #FFFFFF;
+    }
+    &:hover {
+        color: #BAD7FF;
+    }
+    &:active {
+        color: #40A9FF;
+    }
+}
 
 @mixin linear-gradient($color1, $color2) {
     background: $color1; /* For browsers that do not support gradients */
@@ -139,7 +150,70 @@ div.header {
             background-color: white;
         }
     }
+    nav {
+        color: white;
+        float: right;
+        margin-right: 5%;
+        ul {
+            li {
+                display: inline;
+                border-left: 2px solid white;
+                border-right: 2px solid white;
+                padding: 0 10px 0 10px;
+                margin: 0 -3px 0 -3px;
+                @extend %link;
+            }
+        }
+    }
 }
+
+div#pop-up {
+    width: 100%;
+    height: 400px;
+    position: fixed;
+    top: 60px;
+    margin: 0 auto;
+    z-index: 20;
+    display: none;
+    div#pop-up-background {
+        width: 40%;
+        min-width: 330px;
+        height: 100%;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+        @include linear-gradient(#222, #111);
+        border: 3px solid white;
+        position: relative;
+        div#help {
+            width: 85%;
+            height: 100%;
+            margin: 0 auto;
+            overflow-x: hidden;
+            p {
+                color: white;
+                width: 100%;
+                margin: 10px auto;
+                line-height: 18px;
+                margin: -10px 0px 30px 0px;
+            }
+            p.info {
+                text-align: left;
+            }
+        }
+        button#close {
+            position: absolute;
+            right: 2px;
+            top: -6px;
+            width: auto;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+        }
+    }  
+}
+
+
 
 div#palette-colors {
     @extend %flexy;
@@ -206,24 +280,13 @@ div#palette-colors {
         text-align: center;
         color: white;
         a {
-            &:link {
-                color: white;
-            }
-            &:visited {
-                color: #FFFFFF;
-            }
-            &:hover {
-                color: #BAD7FF;
-            }
-            &:active {
-                color: #40A9FF;
-            }
+            @extend %link;
         }
     } 
 }
 
 #swatches {
-    width: 90%;
+    width: 82%;
     margin: 14px auto;
     border: $std-border;
     height: 336px;

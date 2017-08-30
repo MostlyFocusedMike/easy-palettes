@@ -85,7 +85,13 @@
   function clearPaletteInput(event) {
   //overcomes jscolor to clear input in case user wants to paste in number
     var $input = $(event.target);
-    
+    //Mobile browsers can't reliably use the copy/paste buttons, so the only way to copy colors is by doing it 
+    //manually, so clearing the inputs wont help them. However, since this is app is pretty useless on mobile 
+    //anyway, It isn't worth it to find a plugin that keeps this feature. 
+    //I just want to finish this project.
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        return false;
+    }
     $input.focus();
     $input.val("");
   }
@@ -227,15 +233,30 @@
   ////////////////////////////////////////////////////////////////////////////////
   //MAIN PROGRAM BELOW////////////////////////////////////////////////////////////
   var $copyButton = $(".copy-button"),
+    $wrapper = $("#wrapper"),
     $saveButton = $("#save-palette"),
     $clearButton = $("#clear-palettes"),
     $nameForm = $("#palette-name"),
     $inputs = $("input"),
     palettes = checkStorage(),
     $background = $("#background"),
+    $help = $("#help"),
+    $export = $("#export"),
+    $popUp = $("#pop-up"),
+    $helpPopUp = $(""),
+    $close = $("#close"),
     key;
     
   $(createSwatches(loadSwatch, removeSwatch));
+  
+  $help.on("click", function() {
+      $popUp.css("display", "block");
+  })
+  
+  $close.on("click", function() {
+      $popUp.css("display", "none");
+      
+  })
   
   $copyButton.on("click", function(e) {
       clipBoard(e);
