@@ -98,6 +98,10 @@
     //manually, so clearing the inputs wont help them. However, since this is app is pretty useless on mobile 
     //anyway, It isn't worth it to find a plugin that keeps this feature. 
     //I just want to finish this project.
+    if (event.target.id === "palette-name") {
+        $input.focus();
+        $input.val("");
+    }
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         return false;
     }
@@ -234,7 +238,9 @@
       });
   }
   
+  
   function exportSwatches() {
+  //presents all swatches for copying
       var palettes = JSON.parse(localStorage.palettes),
         palettesLength = palettes.length,
         $exportPopUp = $("#export-pop-up-colors"),
@@ -250,8 +256,10 @@
       }
       $copyField.val($exportPopUp.text());
   }
-    
+  
+  
   function menuItems(event) {
+  //handles the menu bar events
       var button = event.target.id,
         $help = $("#help"),
         $export = $("#export"),
