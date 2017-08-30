@@ -192,12 +192,14 @@ div#pop-up {
         position: relative;
         button#close {
             position: absolute;
-            right: 0px;
-            top: -8px;
+            right: 6px;
+            top: 0px;
             width: auto;
             background: transparent;
             border: none;
             font-size: 20px;
+            margin: 0;
+            padding: 0;
         }
         div#help-pop-up {
             width: 85%;

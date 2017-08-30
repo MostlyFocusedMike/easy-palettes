@@ -184,12 +184,14 @@ div#pop-up {
     position: relative; }
     div#pop-up div#pop-up-background button#close {
       position: absolute;
-      right: 0px;
-      top: -8px;
+      right: 6px;
+      top: 0px;
       width: auto;
       background: transparent;
       border: none;
-      font-size: 20px; }
+      font-size: 20px;
+      margin: 0;
+      padding: 0; }
     div#pop-up div#pop-up-background div#help-pop-up {
       width: 85%;
       height: 100%;
