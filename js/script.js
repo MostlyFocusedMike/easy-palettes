@@ -272,7 +272,7 @@
         $popUp.css("display", "block");
         $exportPopUp.css("display", "none");
         $helpPopUp.css("display", "block");
-      } else {
+      } else if (button === "export") {
         $popUp.css("display", "block");
         $helpPopUp.css("display", "none");
         $exportPopUp.css("display", "block");
