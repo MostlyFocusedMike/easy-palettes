@@ -65,7 +65,7 @@
       catch(err) {
           //if for some reason they are using incognito mode the program won't work, it needs
           //localStorage access to function
-          window.alert("Hey, it looks like you're using private mode, or some other browser that restricts access to local storage. You wont be able to save your work if you stay in this mode, please switch to a public browser to get the full use out of this page.")
+          window.alert("Hey, it looks like you're using private mode, or some other browser that restricts access to local storage. You wont be able to save your work if you stay in this mode, please switch to a public browser to get the full use out of this page.");
       }
     
       
@@ -234,7 +234,7 @@
           $(this).animate(
               {top: '+=50', opacity: 0.0}, 
               300
-          )
+          );
       });
   }
   
@@ -247,9 +247,9 @@
         $copyField = $("#color-copy-all"),
         i, paletteName, colors;
 
-      $exportPopUp.html("")
+      $exportPopUp.html("");
       for (i=0; i < palettesLength; i++) {
-          paletteName = palettes[i][5]
+          paletteName = palettes[i][5];
           $exportPopUp.append("<h3>" + paletteName + ": </h3>");
           colors = " " + palettes[i][0] + ", " + palettes[i][1] + ", " + palettes[i][2] + ", " + palettes[i][3] + ", " + palettes[i][4] + " ";
           $exportPopUp.append("<p>" + colors + "</p>");
@@ -307,7 +307,7 @@
   
   $close.on("click", function() {
       $popUp.css("display", "none");  
-  })
+  });
   
   $copyButton.on("click", function(e) {
       clipBoard(e);
